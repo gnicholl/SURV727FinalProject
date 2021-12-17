@@ -135,8 +135,6 @@ variables. This should control for predictor effects in certain cases--for examp
 if reviewers tend to give good reviews to already-popular artists, or if there are
 demographic effects.
 
-Summary of results!
-
 
 # Data
 
@@ -179,7 +177,7 @@ Note that we make use of the following packages:
 if (!require("pacman")) install.packages("pacman")
 library(pacman)
 p_load(char=c("bookdown","curl","httr","jsonlite","rvest","dplyr"
-              ,"papeR","vtable","stargazer","sandwhich","stevetemplates"
+              ,"papeR","vtable","stargazer","sandwich","stevetemplates"
              ,"spotifyr","stringr","tm","utils","WikipediR","ggplot2","plm"))
 ```
 
