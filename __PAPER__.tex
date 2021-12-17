@@ -1,0 +1,1685 @@
+% ARTICLE 2 ----
+% This is just here so I know exactly what I'm looking at in Rstudio when messing with stuff.
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  11pt,
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+  \setmainfont[]{cochineal}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}
+    }
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage[]{natbib}
+\bibliographystyle{apsr}
+
+
+\title{How Influential are Music Critics?\thanks{This paper is prepared
+for the course SURV727 taught by Ruben Bach and Christoph Kern jointly
+at U Michigan and U Maryland. The project files can be found on my
+\href{https://github.com/gnicholl/SURV727FinalProject}{github}. I use
+the Article2 template developed by
+\href{https://github.com/svmiller/stevetemplates}{Steve Miller} to
+create this paper.}}
+\author{true}
+\date{December 16, 2021}
+
+% Jesus, okay, everything above this comment is default Pandoc LaTeX template. -----
+% ----------------------------------------------------------------------------------
+% I think I had assumed beamer and LaTex were somehow different templates.
+
+
+\usepackage{kantlipsum}
+
+\usepackage{abstract}
+\renewcommand{\abstractname}{}    % clear the title
+\renewcommand{\absnamepos}{empty} % originally center
+
+\renewenvironment{abstract}
+ {{%
+    \setlength{\leftmargin}{0mm}
+    \setlength{\rightmargin}{\leftmargin}%
+  }%
+  \relax}
+ {\endlist}
+
+\makeatletter
+\def\@maketitle{%
+  \newpage
+%  \null
+%  \vskip 2em%
+%  \begin{center}%
+  \let \footnote \thanks
+      {\fontsize{18}{20}\selectfont\raggedright  \setlength{\parindent}{0pt} \@title \par}
+    }
+%\fi
+\makeatother
+
+
+\title{How Influential are Music Critics?\thanks{This paper is prepared
+for the course SURV727 taught by Ruben Bach and Christoph Kern jointly
+at U Michigan and U Maryland. The project files can be found on my
+\href{https://github.com/gnicholl/SURV727FinalProject}{github}. I use
+the Article2 template developed by
+\href{https://github.com/svmiller/stevetemplates}{Steve Miller} to
+create this paper.}  }
+
+\date{}
+
+\usepackage{titlesec}
+
+% 
+\titleformat*{\section}{\large\bfseries}
+\titleformat*{\subsection}{\normalsize\itshape} % \small\uppercase
+\titleformat*{\subsubsection}{\normalsize\itshape}
+\titleformat*{\paragraph}{\normalsize\itshape}
+\titleformat*{\subparagraph}{\normalsize\itshape}
+
+% add some other packages ----------
+
+% \usepackage{multicol}
+% This should regulate where figures float
+% See: https://tex.stackexchange.com/questions/2275/keeping-tables-figures-close-to-where-they-are-mentioned
+\usepackage[section]{placeins}
+
+
+
+\makeatletter
+\@ifpackageloaded{hyperref}{}{%
+\ifxetex
+  \PassOptionsToPackage{hyphens}{url}\usepackage[setpagesize=false, % page size defined by xetex
+              unicode=false, % unicode breaks when used with xetex
+              xetex]{hyperref}
+\else
+  \PassOptionsToPackage{hyphens}{url}\usepackage[draft,unicode=true]{hyperref}
+\fi
+}
+
+\@ifpackageloaded{color}{
+    \PassOptionsToPackage{usenames,dvipsnames}{color}
+}{%
+    \usepackage[usenames,dvipsnames]{color}
+}
+\makeatother
+\hypersetup{breaklinks=true,
+            bookmarks=true,
+            pdfauthor={Gradon Nicholls (Non-Degree Student, Joint
+Program in Survey Methodology, University of Maryland)},
+             pdfkeywords = {Music Streaming, Experience Goods, R, APIs,
+Web Scraping},
+            pdftitle={How Influential are Music Critics?},
+            colorlinks=true,
+            citecolor=blue,
+            urlcolor=blue,
+            linkcolor=magenta,
+            pdfborder={0 0 0}}
+\urlstyle{same}  % don't use monospace font for urls
+
+% Add an option for endnotes. -----
+
+
+
+% This will better treat References as a section when using natbib
+% https://tex.stackexchange.com/questions/49962/bibliography-title-fontsize-problem-with-bibtex-and-the-natbib-package
+\renewcommand\bibsection{%
+   \section*{References}%
+   \markboth{\MakeUppercase{\refname}}{\MakeUppercase{\refname}}%
+  }%
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+
+
+\usepackage{longtable}
+\LTcapwidth=.95\textwidth
+\linespread{1.05}
+\usepackage{hyperref}
+\usepackage{float}
+\floatplacement{figure}{H}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+
+\newtheorem{hypothesis}{Hypothesis}
+
+
+% trick for moving figures to back of document
+% really wish we'd knock this shit off with moving tables/figures to back of document
+% but, alas...
+
+% 
+% Optional code chunks ------
+% SOURCE: https://stackoverflow.com/questions/50702942/does-rmarkdown-allow-captions-and-references-for-code-chunks
+
+
+
+\begin{document}
+
+% \textsf{\textbf{This is sans-serif bold text.}}
+% \textbf{\textsf{This is bold sans-serif text.}}
+
+
+% \maketitle
+
+{% \usefont{T1}{pnc}{m}{n}
+\setlength{\parindent}{0pt}
+\thispagestyle{plain}
+{%\fontsize{18}{20}\selectfont\raggedright
+\maketitle  % title \par
+
+}
+
+
+
+
+{
+   \vskip 13.5pt\relax \normalsize\fontsize{11}{12}
+   \MakeUppercase{Gradon Nicholls}, \small{Non-Degree Student, Joint
+Program in Survey Methodology, University of Maryland}   
+
+}
+
+}
+
+
+
+
+
+
+
+
+\begin{abstract}
+
+%    \hbox{\vrule height .2pt width 39.14pc}
+
+    \vskip 8.5pt % \small
+
+\noindent \small{Put abstract here}
+
+
+\vskip 8.5pt \noindent \emph{Keywords}: Music Streaming, Experience
+Goods, R, APIs, Web Scraping \par
+
+%    \hbox{\vrule height .2pt width 39.14pc}
+
+
+
+\end{abstract}
+
+
+\vskip -8.5pt
+
+
+ % removetitleabstract
+
+
+\setlength{\parindent}{16pt}
+\setlength{\parskip}{0pt}
+
+% We'll put doublespacing here
+% Remember to cut it out later before bib
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+When the quality of a product is unknown to the consumer prior to
+consumption, the consumer must rely on the experiences of others in
+order to make a purchase decision. These types of products are known as
+``experience goods'' \citep{reinstein2005influence}, and include things
+like restaurants, movies, TV shows, tourist destinations, and music.
+
+Before purchasing experience goods, consumers may rely both on expert
+reviews as well as reviews from other consumers or ``users''. Expert and
+user reviews are not perfectly correlated and may provide differing
+information: while expert reviews provide a sense of professionalism and
+objectivity, user reviews (though biased towards highly negative or
+highly positive scores) offer a relatable lay-person point of view
+\citep{amblee2007freeware}. Use of review scores can be thought of as a
+method for reducing search costs when researching a product
+\citep{huang2009searching} in which case consumers must come up with
+methods for integrating reviews from multiple sources
+\citep{west1998integrating}, providing a demand for review aggregators
+such as Rotten Tomatoes and Metacritic.
+
+The goal of this paper is to study the role music critics play with
+respect to the commercial performance of an artist's album. Anecdotally,
+it seems to be the case that critics have an impact on the music
+industry \citep{brennan2006rough}. For instance, the mere fact that
+music critics exist at all, and have for so long, provides evidence that
+their work serves a need in the market. Music labels would seem to
+agree, as they often provide advance copies of their albums to reviewers
+so that reviews can coincide with the album's release date.
+
+The music industry, and with it the role of music critics, has evolved
+as the economy becomes increasingly digitalized. Music can be consumed
+rapidly and at very low cost. \citet{waldfogel201514} provides a summary
+of the music industry in the age of ``new media,'' and notes the ability
+of artists to find success despite a lack of airplay in traditional
+media. An example is The Arctic Monkeys, whose early success is
+attributed to the distribution of their demos by fans through the
+internet \citep{morey2008arctic}--i.e.~they are one of the first bands
+to ``go viral.''
+
+In the age of new media, a music critic need not be a faceless author.
+At the time of knitting this document, the music review channel
+theneedledrop\footnote{\url{https://www.youtube.com/channel/UCt7fwAhXDy3oNFTAzF2o8Pw}}
+has more than 2.5 million subscribers and nearly 800 million views
+across all videos. Anthony Fantano, the curator of the channel, is not
+just a reviewer but an internet personality with a dedicated following,
+and has a side channel on YouTube for more ``off-the-cuff'' content.
+Thus, I argue that Fantano may exist as a cross between an ``expert''
+and ``user'' reviewer--in other words, he builds a lay-person trust
+through his vlog-like content, while maintaining credibility as an
+objective and thorough reviewer through his main channel.
+
+In the new media landscape, we can hypothesize a clear causal pathway
+between critic reviews and album performance that did not exist in a
+pre-digital world. For example, in the description of a YouTube video or
+in the text of an article, a critic can include a link which sends the
+viewer or reader directly to listen to the album. Streaming platforms
+like Spotify or Apple Music even allow you to embed their players in a
+webpage for even more immediate listening. Artists have often complained
+of low pay-out per stream on such platforms.\footnote{e.g.~\url{https://www.nytimes.com/2021/05/07/arts/music/streaming-music-payments.html}}
+However, as of 2016, streaming accounted for a majority of revenue in
+the industry, and growth in total revenue was driven mostly by paid
+subscriptions to streaming services.\footnote{\url{http://www.riaa.com/wp-content/uploads/2017/03/RIAA-2016-Year-End-News-Notes.pdf}}
+This, combined with the fact that streaming could also lead to fans
+buying physical albums, merchandise, or concert tickets, make streaming
+a relevant variable of interest, and it is therefore the focus of this
+paper.
+
+In order to correlate review scores with number of listens, I make use
+of several data sources. I start with a list of top 1000 artists on
+Spotify, and obtain information on their albums and release dates from
+the Spotify api. For each album, I pull its respective article from the
+Wikipedia api, and use web scraping techniques to obtain review scores
+from the page (if they exist). Unfortunately, the Spotify api does not
+provide the number of listens for an album. I therefore use the Last.fm
+api to collect data on the number of ``scrobbles'', which is a term for
+music listening data that Last.fm has collected from other apps that a
+user is running.
+
+In estimation, we should consider that a critic can take the role of
+either an \emph{influencer} or a \emph{predictor}
+\citep{eliashberg1997film}. As an \emph{influencer}, a positive review
+could entice their audience to listen to an album. Additionally, the
+review may act simply as a source of publicity \citep{sorensen2004any},
+regardless of whether an album is scored positively or negatively. As a
+\emph{predictor}, the reviewer may simply be forecasting the popularity
+of an album. As discussed in \citet{reinstein2005influence}, this latter
+effect is a spurious correlation, and does not represent the causal
+effect that we are interested in.
+
+I attempt to control for the predictor effect in two ways. First, I
+assume that correlation between review scores and listens for older
+albums represent the predictor effect only--that is, any effect critics
+have had has dissipated over time. Under this reasoning, by including a
+time dummy interacted with review scores, I should capture the
+influencer effect at the margin. Second, I make use of artist fixed
+effects to account for unobserved artist-specific variables. This should
+control for predictor effects in certain cases--for example, if
+reviewers tend to give good reviews to already-popular artists, or if
+there are demographic effects.
+
+Summary of results!
+
+\hypertarget{data}{%
+\section{Data}\label{data}}
+
+I make use of several data sources in order to collect data on artists,
+their albums, the number of listens for each album, and the review
+scores of each album. As a high-level summary, the procedure is as
+follows:
+
+\begin{itemize}
+\tightlist
+\item
+  Start with a list of artist names
+\item
+  For each artist name, use Spotify api to to find their albums
+\item
+  For each album, use Last.fm api to find the album's scrobbles
+\item
+  For each album, use the Google Custom Search api to find the url of
+  the album's wikipedia page
+\item
+  Use web scraping techniques to obtain review scores from the wikipedia
+  page
+\end{itemize}
+
+The following subsections provide details and code for each task. The
+code to produce the full dataset takes a long time to run, so for
+brevity I show an example of one artist and one album here. The full
+code can be found in CreateData.R in the GitHub repository for this
+project.
+
+Note that we make use of the following packages:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{ (}\SpecialCharTok{!}\FunctionTok{require}\NormalTok{(}\StringTok{"pacman"}\NormalTok{)) }\FunctionTok{install.packages}\NormalTok{(}\StringTok{"pacman"}\NormalTok{)}
+\FunctionTok{library}\NormalTok{(pacman)}
+\FunctionTok{p\_load}\NormalTok{(}\AttributeTok{char=}\FunctionTok{c}\NormalTok{(}\StringTok{"bookdown"}\NormalTok{,}\StringTok{"curl"}\NormalTok{,}\StringTok{"httr"}\NormalTok{,}\StringTok{"jsonlite"}\NormalTok{,}\StringTok{"rvest"}\NormalTok{,}\StringTok{"dplyr"}
+\NormalTok{              ,}\StringTok{"papeR"}\NormalTok{,}\StringTok{"vtable"}\NormalTok{,}\StringTok{"stargazer"}\NormalTok{,}\StringTok{"sandwhich"}
+\NormalTok{             ,}\StringTok{"spotifyr"}\NormalTok{,}\StringTok{"stringr"}\NormalTok{,}\StringTok{"tm"}\NormalTok{,}\StringTok{"utils"}\NormalTok{,}\StringTok{"WikipediR"}\NormalTok{,}\StringTok{"ggplot2"}\NormalTok{,}\StringTok{"plm"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{list-of-artist-names}{%
+\subsection{List of artist names}\label{list-of-artist-names}}
+
+Given the uncountable number of artists that have ever existed, it is
+not immediately clear how best to choose which artists should be
+included in the analysis. For now, I prioritize convenience, and use a
+list of the top 1000 Spotify artists as pulled by chartmasters.org. It
+seems reasonable to start with the most popular artists given that they
+make up the largest share of the market. However, it could bias results
+if, for example, reviews have a greater impact on lesser-known artists.
+To get a sense of the popularity of the artists, the number 1 and number
+1000 artists currently have about 55 and 7 million monthly listeners,
+respectively, at the time of writing.
+
+Below is code\footnote{I make use of the
+  \href{https://selectorgadget.com/}{selector gadget} to help with web
+  scraping.} for scraping the list from chartmaster's webpage. Note that
+the list is updated regularly, and so may differ slightly from my list
+(due to a glitch, I collected the data in two batches, once on November
+1 2021 and one on December 15, 2021). Currently, the top 4 artists on
+Spotify are Drake, Ed Sheeran, Bad Bunny, and Ariana Grande.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{chartmasterurl }\OtherTok{=} \StringTok{"https://chartmasters.org/most{-}streamed{-}artists{-}ever{-}on{-}spotify/"}
+\NormalTok{chartwebpage }\OtherTok{=} \FunctionTok{read\_html}\NormalTok{(chartmasterurl)}
+\NormalTok{xpath}\OtherTok{=}\StringTok{\textquotesingle{}//td[(((count(preceding{-}sibling::*) + 1) = 2) and parent::*)]\textquotesingle{}}
+\NormalTok{artistnames }\OtherTok{=} \FunctionTok{html\_nodes}\NormalTok{(chartwebpage, }\AttributeTok{xpath=}\NormalTok{xpath)}
+\NormalTok{artistnames }\OtherTok{=} \FunctionTok{html\_text}\NormalTok{(artistnames,}\AttributeTok{trim=}\NormalTok{T)}
+\FunctionTok{head}\NormalTok{(artistnames,}\DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Drake"         "Ed Sheeran"    "Bad Bunny"     "Ariana Grande"
+\end{verbatim}
+
+\hypertarget{spotify-api}{%
+\subsection{Spotify API}\label{spotify-api}}
+
+To obtain album information for each artist, I make use of the Spotify
+API. First, I search for the artist's name on Spotify and take the first
+result. As long as the list of artists we start with is relatively close
+to their official names, we should succeed in finding the correct
+listing in Spotify. It further helps that in this case, the list I start
+with is itself pulled from Spotify by chartmasters.org. Below, I obtain
+the id number and artist name (as defined by Spotify) for Drake. In this
+case, the artist's name is the same as what we started with.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{search }\OtherTok{=}\NormalTok{ spotifyr}\SpecialCharTok{::}\FunctionTok{search\_spotify}\NormalTok{(}\AttributeTok{q=}\StringTok{"Drake"}\NormalTok{, }\AttributeTok{type=}\StringTok{"artist"}\NormalTok{)}
+\NormalTok{artist\_id }\OtherTok{=}\NormalTok{ search}\SpecialCharTok{$}\NormalTok{id[}\DecValTok{1}\NormalTok{]}
+\NormalTok{artist }\OtherTok{=}\NormalTok{ spotifyr}\SpecialCharTok{::}\FunctionTok{get\_artist}\NormalTok{(}\AttributeTok{id=}\NormalTok{artist\_id, }\AttributeTok{authorization=}\NormalTok{access\_token)}
+\NormalTok{artist\_name }\OtherTok{=}\NormalTok{ artist}\SpecialCharTok{$}\NormalTok{name}
+\NormalTok{artist\_name}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Drake"
+\end{verbatim}
+
+Using the artist id number, I obtain a list of Drake's albums in
+Spotify. Note that albums can be pulled only 50 at a time. This is
+accounted for in the main code by pulling albums 50 at a time until all
+albums are found.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{albums }\OtherTok{=}\NormalTok{ spotifyr}\SpecialCharTok{::}\FunctionTok{get\_artist\_albums}\NormalTok{(}\AttributeTok{id=}\NormalTok{artist\_id,}\AttributeTok{include\_groups=}\StringTok{"album"}
+\NormalTok{                                    ,}\AttributeTok{market=}\StringTok{"CA"}\NormalTok{,}\AttributeTok{limit=}\DecValTok{50}
+\NormalTok{                                    ,}\AttributeTok{authorization=}\NormalTok{access\_token)}
+\NormalTok{albums }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(}\FunctionTok{c}\NormalTok{(name,release\_date,total\_tracks)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{slice}\NormalTok{(}\DecValTok{16}\SpecialCharTok{:}\DecValTok{24}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                                   name release_date total_tracks
+## 1 If You're Reading This It's Too Late   2015-02-12           17
+## 2 If You're Reading This It's Too Late   2015-02-12           17
+## 3        Nothing Was The Same (Deluxe)   2013-01-01           16
+## 4        Nothing Was The Same (Deluxe)   2013-01-01           15
+## 5        Nothing Was The Same (Deluxe)   2013-01-01           16
+## 6        Nothing Was The Same (Deluxe)   2013-01-01           16
+## 7        Nothing Was The Same (Deluxe)   2013-01-01           15
+## 8                 Nothing Was The Same   2013-01-01           13
+## 9                 Nothing Was The Same   2013-01-01           13
+\end{verbatim}
+
+You will note that multiple versions of the same album exist in Spotify.
+Sometimes they are identical, though other times they may have deluxe
+versions, differing numbers of tracks, or differing release dates. Since
+we do not pull listens from Spotify itself, we can remove duplicates
+from the list without having to worry about aggregating albums together.
+To remove duplicates, I first remove text contained within round or
+square brackets. Next, I remove any albums that contain duplicate names
+or release dates. In this case we are left with 12 distinct albums
+released by Drake, as seen below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{albums}\SpecialCharTok{$}\NormalTok{name }\OtherTok{=} \FunctionTok{gsub}\NormalTok{(}\StringTok{"}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{s*}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{([\^{}}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{)]+}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{)"}\NormalTok{,}\StringTok{""}\NormalTok{,albums}\SpecialCharTok{$}\NormalTok{name)}
+\NormalTok{albums }\OtherTok{=}\NormalTok{ albums[}\SpecialCharTok{!}\FunctionTok{duplicated}\NormalTok{(albums}\SpecialCharTok{$}\NormalTok{name),]}
+\NormalTok{albums }\OtherTok{=}\NormalTok{ albums[}\SpecialCharTok{!}\FunctionTok{duplicated}\NormalTok{(albums}\SpecialCharTok{$}\NormalTok{release\_date),]}
+
+\NormalTok{albums }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(}\FunctionTok{c}\NormalTok{(name,release\_date,total\_tracks))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                                    name release_date total_tracks
+## 1                   Certified Lover Boy   2021-09-03           21
+## 3                  Dark Lane Demo Tapes   2020-05-01           14
+## 5                          Care Package   2019-08-02           17
+## 7                           So Far Gone   2019-02-14           18
+## 8                              Scorpion   2018-06-29           25
+## 10                            More Life   2017-03-18           22
+## 12                                Views   2016-05-06           20
+## 14              What A Time To Be Alive   2015-09-25           11
+## 16 If You're Reading This It's Too Late   2015-02-12           17
+## 18                 Nothing Was The Same   2013-01-01           16
+## 25                            Take Care   2011-11-15           19
+## 31                       Thank Me Later   2010-01-01           15
+\end{verbatim}
+
+We can obtain information about an album's tracks by using the album's
+id number provided by the API. Due to time constraints, I have not yet
+experimented with using track analysis in this paper, and so all we need
+for now is the album's name. For the remainder of this section we will
+use Drake's most recent album, Certified Lover Boy, as the example.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{album\_info}\OtherTok{=}\NormalTok{spotifyr}\SpecialCharTok{::}\FunctionTok{get\_album}\NormalTok{(}\AttributeTok{id=}\NormalTok{albums}\SpecialCharTok{$}\NormalTok{id[}\DecValTok{1}\NormalTok{]}
+\NormalTok{                                  ,}\AttributeTok{authorization=}\NormalTok{access\_token)}
+\NormalTok{album\_name }\OtherTok{=}\NormalTok{ album\_info}\SpecialCharTok{$}\NormalTok{name}
+\NormalTok{album\_name}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Certified Lover Boy"
+\end{verbatim}
+
+\hypertarget{last.fm}{%
+\subsection{Last.fm}\label{last.fm}}
+
+As previously noted, Spotify does not provide access to listening
+statistics through their API. I therefore turn to Last.fm to collect a
+proxy measure. As of 2014, Last.fm does not offer its own streaming
+service, but instead provides integration with Spotify and
+YouTube.\footnote{\url{https://blog.last.fm/2014/01/29/did-someone-say-on-demand}}
+Last.fm's main service is to allow users to track their music listening
+behaviour across multiple devices and apps. To do this, it collects
+information from other apps in the background, a process called
+``scrobbling.''
+
+The benefit of using Last.fm scrobbles in our analysis is that we obtain
+data on listening behaviour from many different sources (for example,
+both Spotify and Apple Music would be captured). The major downside is
+that Last.fm is an opt-in service. This means there is a potential for
+selection bias in our analysis. I hypothesize that Last.fm users
+represent more dedicated music listeners, and thus may be more aware of
+music news and reviews. If that is the case, correlations between
+listening and review scores may be biased upwards, though are still
+informative about a large subgroup of listeners.
+
+That aside, obtaining scrobbles is fairly straightforward thanks to
+Last.fm's API. Since Last.FM's data is scrobbled from other sources, the
+official artist and album names from Spotify can be used to construct a
+valid url in most cases, as long as we take care to strip out characters
+that have special meanings.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{url\_artist }\OtherTok{=} \FunctionTok{str\_replace\_all}\NormalTok{(artist\_name,}\StringTok{"}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{+"}\NormalTok{,}\StringTok{"\%2B"}\NormalTok{)}
+\NormalTok{url\_album  }\OtherTok{=} \FunctionTok{str\_replace\_all}\NormalTok{(album\_name,}\StringTok{"}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{+"}\NormalTok{,}\StringTok{"\%2B"}\NormalTok{)}
+\NormalTok{url\_artist }\OtherTok{=} \FunctionTok{str\_replace\_all}\NormalTok{(url\_artist,}\StringTok{"\&"}\NormalTok{,}\StringTok{"\%26"}\NormalTok{)}
+\NormalTok{url\_album  }\OtherTok{=} \FunctionTok{str\_replace\_all}\NormalTok{(url\_album,}\StringTok{"\&"}\NormalTok{,}\StringTok{"\%26"}\NormalTok{)}
+\NormalTok{url\_artist }\OtherTok{=} \FunctionTok{str\_replace\_all}\NormalTok{(url\_artist,}\StringTok{"\#"}\NormalTok{,}\StringTok{"\%23"}\NormalTok{)}
+\NormalTok{url\_album  }\OtherTok{=} \FunctionTok{str\_replace\_all}\NormalTok{(url\_album,}\StringTok{"\#"}\NormalTok{,}\StringTok{"\%23"}\NormalTok{)}
+
+\NormalTok{url }\OtherTok{=} \FunctionTok{paste0}\NormalTok{(}\StringTok{"http://ws.audioscrobbler.com/2.0/"}\NormalTok{,}
+             \StringTok{"?method=album.getinfo"}\NormalTok{,}
+             \StringTok{"\&api\_key="}\NormalTok{,}\StringTok{"xxxxxxxx"}\NormalTok{,}
+             \StringTok{"\&artist="}\NormalTok{, }\FunctionTok{gsub}\NormalTok{(}\StringTok{" "}\NormalTok{, }\StringTok{"+"}\NormalTok{, url\_artist),}
+             \StringTok{"\&album="}\NormalTok{, }\FunctionTok{gsub}\NormalTok{(}\StringTok{" "}\NormalTok{, }\StringTok{"+"}\NormalTok{, url\_album),}
+             \StringTok{"\&format=json"}\NormalTok{)}
+\NormalTok{url}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=xxxxxxxx&artist=Drake&album=Certified+Lover+Boy&format=json"
+\end{verbatim}
+
+Below we parse the JSON file in order to obtain the number of scrobbles.
+A quick \href{https://www.last.fm/music/Drake/Certified+Lover+Boy}{check
+on Last.FM} shows that the number we pulled is the correct one.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data\_json }\OtherTok{=}\NormalTok{ httr}\SpecialCharTok{::}\FunctionTok{GET}\NormalTok{(url)}
+\NormalTok{data\_json }\OtherTok{=}\NormalTok{ jsonlite}\SpecialCharTok{::}\FunctionTok{fromJSON}\NormalTok{(}\FunctionTok{rawToChar}\NormalTok{(data\_json}\SpecialCharTok{$}\NormalTok{content))}
+\NormalTok{album\_scrobbles }\OtherTok{=} \FunctionTok{as.integer}\NormalTok{(data\_json}\SpecialCharTok{$}\NormalTok{album}\SpecialCharTok{$}\NormalTok{playcount)}
+\NormalTok{album\_scrobbles}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 17603629
+\end{verbatim}
+
+\hypertarget{wikipedia}{%
+\subsection{Wikipedia}\label{wikipedia}}
+
+Metacritic is an obvious source for aggregated album review scores.
+However, web scraping at a mass scale is not permitted on the
+platform,\footnote{That being said, I place code for scraping individual
+  Metacritic pages in the Appendix I.} and they do not offer an API
+service. I therefore turn to Wikipedia for review score information.
+
+Unfortunately, Wikipedia is not as exhaustive as Metacritic. In our
+example of Drake's Certified Lover Boy, the
+\href{https://www.metacritic.com/music/certified-lover-boy/drake}{Metacritic
+page shows 20 reviews} while the corresponding
+\href{https://en.wikipedia.org/wiki/Certified_Lover_Boy}{wiki page shows
+only 10}. As will be seen later, most Wikipedia pages I collected
+contained 10 or fewer reviews, suggesting that 10 may be the upper bound
+chosen by Wikipedia moderators. It is worth further investigation as to
+how reviews are chosen to be included. Interestingly, neither Wikipedia
+nor Metacritic host scores from YouTube channel theneedledrop, meaning
+that results may reflect old media more than new media.
+
+Rather than try to construct the correct Wikipedia url by hand, I use
+the Google Custom Search API, programmed to query only wikipedia.org, to
+search the phrase ``{[}artist name{]} {[}album name{]} album''. The
+output is a list of the 10 most relevant web pages as selected by
+Google. I try the first result, and if that fails, assume review scores
+and/or the desired article do not exist. Anecdotally this has worked
+well, though more work should be done to test the accuracy of the
+algorithm.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{keyword }\OtherTok{=} \FunctionTok{paste0}\NormalTok{(artist\_name,}\StringTok{" "}\NormalTok{,album\_name,}\StringTok{" "}\NormalTok{,}\StringTok{"album"}\NormalTok{)}
+\NormalTok{keyword }\OtherTok{=} \FunctionTok{gsub}\NormalTok{(}\StringTok{"[[:punct:]]"}\NormalTok{, }\StringTok{" "}\NormalTok{, keyword)}
+\NormalTok{keyword }\OtherTok{=} \FunctionTok{str\_squish}\NormalTok{(keyword)}
+\NormalTok{keyword }\OtherTok{=} \FunctionTok{gsub}\NormalTok{(}\StringTok{" "}\NormalTok{, }\StringTok{"+"}\NormalTok{, keyword)}
+
+\NormalTok{url }\OtherTok{=} \FunctionTok{paste0}\NormalTok{(}\StringTok{"https://www.googleapis.com/customsearch/v1?"}
+\NormalTok{             , }\StringTok{"key="}\NormalTok{, google.key}
+\NormalTok{             , }\StringTok{"\&q="}\NormalTok{, keyword}
+\NormalTok{             , }\StringTok{"\&gl=us"}         
+\NormalTok{             , }\StringTok{"\&hl=en"}                
+\NormalTok{             , }\StringTok{"\&cx="}\NormalTok{, google.cx}
+\NormalTok{             , }\StringTok{"\&fields=items(link)"}
+\NormalTok{)}
+\NormalTok{googlesearch }\OtherTok{=} \FunctionTok{GET}\NormalTok{(url)}
+\NormalTok{content }\OtherTok{=} \FunctionTok{rawToChar}\NormalTok{(googlesearch}\SpecialCharTok{$}\NormalTok{content)}
+\NormalTok{searchresults }\OtherTok{=} \FunctionTok{fromJSON}\NormalTok{(content)}
+\NormalTok{searchresults}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $items
+##                                                                             link
+## 1                              https://en.wikipedia.org/wiki/Certified_Lover_Boy
+## 2                              https://de.wikipedia.org/wiki/Certified_Lover_Boy
+## 3                                 https://en.wikipedia.org/wiki/Drake_(musician)
+## 4                              https://fr.wikipedia.org/wiki/Certified_Lover_Boy
+## 5                              https://es.wikipedia.org/wiki/Certified_Lover_Boy
+## 6                                https://en.wikipedia.org/wiki/Drake_discography
+## 7  https://en.wikipedia.org/wiki/List_of_Billboard_200_number-one_albums_of_2021
+## 8                                 https://en.wikipedia.org/wiki/Girls_Want_Girls
+## 9                https://en.wikipedia.org/wiki/Solid_(Young_Thug_and_Gunna_song)
+## 10                                    https://en.wikipedia.org/wiki/In_the_Bible
+\end{verbatim}
+
+Rather than scrape the Wikipedia page, I make use of the Wikipedia API
+to retrieve the page's content.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{wikiurl }\OtherTok{=}\NormalTok{ searchresults}\SpecialCharTok{$}\NormalTok{items}\SpecialCharTok{$}\NormalTok{link[}\DecValTok{1}\NormalTok{]}
+
+\CommentTok{\# deal with special characters}
+\NormalTok{pgname }\OtherTok{=} \FunctionTok{curl\_unescape}\NormalTok{(wikiurl)}
+
+\CommentTok{\# keep the end of the url {-}\textgreater{} the page name wikipedia api wants}
+\NormalTok{pgname }\OtherTok{=} \FunctionTok{gsub}\NormalTok{(}\StringTok{"https://.*}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{.wikipedia}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{.org.*/"}\NormalTok{,}\StringTok{""}\NormalTok{,pgname)}
+
+\CommentTok{\# obtain page content}
+\NormalTok{webpage }\OtherTok{=}\NormalTok{ WikipediR}\SpecialCharTok{::}\FunctionTok{page\_content}\NormalTok{(}\AttributeTok{language=}\StringTok{"en"}\NormalTok{,}\AttributeTok{project=}\StringTok{"wikipedia"}\NormalTok{,}\AttributeTok{page\_name=}\NormalTok{pgname)}
+\end{Highlighting}
+\end{Shaded}
+
+From there, there are quite a number of processing steps required in
+order to properly format review scores. The complete code can be found
+in Appendix II. In short, we must convert scores from various units to a
+consistent scale (e.g.~3/5 stars, 8/10 stars, 60\%, 50/100). In the case
+of letter grades (e.g.~B+), I use Metaritic's rules for converting to a
+numeric grade\footnote{\url{https://www.metacritic.com/about-metascores}}.
+Reviews based solely on words (e.g.~``positive'') are excluded from
+analysis. I also pull release date information as a way to
+cross-reference with Spotify.
+
+The end result can be seen below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{release\_date\_wiki}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "2021-09-03"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{wikiscores\_data}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                      V1 V2
+## 3              AllMusic 60
+## 4         The Arts Desk 60
+## 5                 Clash 60
+## 6  Entertainment Weekly 50
+## 7          The Guardian 60
+## 8       The Independent 40
+## 9  The Line of Best Fit 50
+## 10                  NME 40
+## 11            Pitchfork 66
+## 12        Rolling Stone 70
+\end{verbatim}
+
+\hypertarget{exploratory-data-analysis-and-cleaning}{%
+\subsection{Exploratory Data Analysis and
+Cleaning}\label{exploratory-data-analysis-and-cleaning}}
+
+The result of the previous steps is a data frame with 12,694
+albums.\footnote{For the full code, see Appendix III.} Here I load the
+data. As previously mentioned, I pulled data in two batches, and so
+append the two batches together, creating a flag for each batch so I can
+account for the time discrepancy in estimation.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{load}\NormalTok{(}\AttributeTok{file=}\StringTok{"finaldata.RData"}\NormalTok{)}
+\FunctionTok{load}\NormalTok{(}\AttributeTok{file=}\StringTok{"finaldata\_pt2.RData"}\NormalTok{)}
+
+\NormalTok{finaldata }\OtherTok{=}\NormalTok{ finaldata }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{batch=}\DecValTok{1}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{isbad)}
+\NormalTok{finaldata\_pt2 }\OtherTok{=}\NormalTok{ finaldata\_pt2 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{batch=}\DecValTok{2}\NormalTok{)}
+\NormalTok{finaldata }\OtherTok{=} \FunctionTok{rbind}\NormalTok{(finaldata,finaldata\_pt2)}
+\end{Highlighting}
+\end{Shaded}
+
+We need a method of aggregating review scores in order to conduct
+analysis. Here I consider the number of available scores and the mean
+score, but one could consider other measures like order statistics or
+measures of spread.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{finaldata}\SpecialCharTok{$}\NormalTok{numscores }\OtherTok{=}
+  \FunctionTok{unlist}\NormalTok{(}\FunctionTok{lapply}\NormalTok{(finaldata}\SpecialCharTok{$}\NormalTok{wiki\_scores, }\AttributeTok{FUN =} \ControlFlowTok{function}\NormalTok{(y) \{}\FunctionTok{length}\NormalTok{(y)\}))}
+\NormalTok{finaldata}\SpecialCharTok{$}\NormalTok{meanscores }\OtherTok{=}
+  \FunctionTok{unlist}\NormalTok{(}\FunctionTok{lapply}\NormalTok{(finaldata}\SpecialCharTok{$}\NormalTok{wiki\_scores, }\AttributeTok{FUN =} \ControlFlowTok{function}\NormalTok{(y) \{}\FunctionTok{mean}\NormalTok{(y,}\AttributeTok{na.rm=}\NormalTok{T)\}))}
+\end{Highlighting}
+\end{Shaded}
+
+First, let's look at the distribution of number of scores by album:
+
+\begin{figure}
+\centering
+\includegraphics{__PAPER___files/figure-latex/unnamed-chunk-18-1.pdf}
+\caption{Distribution of Number of Review Scores}
+\end{figure}
+
+We note first that there is a suspicious cluster at 10 reviews. As noted
+above, Wikipedia pages are not ehaustive in their listing of review
+scores, and it seems that 10 reviews is the usual maximum provided on
+Wikipedia pages. Thus, there is right-tail censoring in this variable,
+and this should be better understood in future.
+
+Additionally, nearly half of the albums pulled have 0 review scores.
+Given 12,694 albums and 1,000 artists, we have on average about 12
+albums per artist. This is somewhat high, and suggests there may be the
+presence of live albums, EPs, etc that are lesser known and less
+reviewed. I also note the presence of classical musicians and music
+associated with children's cartoons, that are popular but not in scope
+of the study. For now, I drop all 0's, under the assumption that popular
+artists in scope for analysis would likely have all of their major
+albums reviewed.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cleandata }\OtherTok{=}\NormalTok{ finaldata }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(numscores}\SpecialCharTok{\textgreater{}}\DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Next we look at the number of albums by artist:
+
+\begin{figure}
+\centering
+\includegraphics{__PAPER___files/figure-latex/unnamed-chunk-20-1.pdf}
+\caption{Distribution of Number of Albums}
+\end{figure}
+
+We note first that there are several extreme outliers who have up to
+nearly 250 albums. Let's take a look at a few of the most extreme
+outliers:
+
+\begin{table}[H]
+
+\caption{\label{tab:unnamed-chunk-21}Artists with More than 50 Albums}
+\centering
+\begin{tabular}[t]{l|r}
+\hline
+Artist Name & Num. Albums\\
+\hline
+Elvis Presley & 54\\
+\hline
+Frank Sinatra & 64\\
+\hline
+Johnny Cash & 78\\
+\hline
+Bob Dylan & 57\\
+\hline
+Frédéric Chopin & 245\\
+\hline
+Neil Young & 67\\
+\hline
+Dolly Parton & 65\\
+\hline
+Willie Nelson & 85\\
+\hline
+Ella Fitzgerald & 78\\
+\hline
+Grateful Dead & 64\\
+\hline
+\end{tabular}
+\end{table}
+
+Frederic Chopin, a classical composer, is a clear outlier and not in
+scope. I therefore drop from subsequent analysis. Other outliers do
+appear however to be in scope. The next biggest outlier is Willie Nelson
+with 85 albums. Let's take a look at the distribution of the number of
+scrobbles of Willie's albums:
+
+\begin{figure}
+\centering
+\includegraphics{__PAPER___files/figure-latex/unnamed-chunk-23-1.pdf}
+\caption{Distribution of Scrobbles Among Willie Nelson Albums}
+\end{figure}
+
+Willie Nelson appears to have quite a few albums with very few
+scrobbles. These likely represent more niche releases such as live
+albums or demos. While not necessarily out of scope, it would be worth
+doing a robustness check in the analysis stage where these are dropped.
+For now I use a simple method: classify the smallest 2.5\% of an
+artist's albums as ``outliers''.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cleandata }\OtherTok{=}\NormalTok{ cleandata }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(artist\_id) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{lowerbound=}\FunctionTok{quantile}\NormalTok{(album\_scrobbles,}\AttributeTok{p=}\FloatTok{0.025}\NormalTok{,}\AttributeTok{na.rm=}\NormalTok{T)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ungroup}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{outlier=}\NormalTok{album\_scrobbles}\SpecialCharTok{\textless{}}\NormalTok{lowerbound) }
+\end{Highlighting}
+\end{Shaded}
+
+We can see that in the case of Willie Nelson, we would drop three albums
+with only a handful of scrobbles.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cleandata }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(artist\_name}\SpecialCharTok{==}\StringTok{"Willie Nelson"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{select}\NormalTok{(}\FunctionTok{c}\NormalTok{(artist\_name,album\_name,album\_scrobbles,outlier)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(outlier}\SpecialCharTok{==}\ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kable}\NormalTok{(}\AttributeTok{caption=}\StringTok{"Outlier Example: Willie Nelson"}
+\NormalTok{        ,}\AttributeTok{col.names=}\FunctionTok{c}\NormalTok{(}\StringTok{"Artist"}\NormalTok{,}\StringTok{"Album"}\NormalTok{,}\StringTok{"Scrobbles"}\NormalTok{,}\StringTok{"Outlier?"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kable\_styling}\NormalTok{(}\AttributeTok{latex\_options =} \StringTok{"HOLD\_position"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}[H]
+
+\caption{\label{tab:unnamed-chunk-25}Outlier Example: Willie Nelson}
+\centering
+\begin{tabular}[t]{l|l|r|l}
+\hline
+Artist & Album & Scrobbles & Outlier?\\
+\hline
+Willie Nelson & If I Can Find a Clean Shirt & 93 & TRUE\\
+\hline
+Willie Nelson & The Winning Hand & 270 & TRUE\\
+\hline
+Willie Nelson & WWII & 149 & TRUE\\
+\hline
+\end{tabular}
+\end{table}
+
+Finally, I drop a few albums with missing or 0 scrobbles.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cleandata }\OtherTok{=}\NormalTok{ cleandata }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(album\_scrobbles)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(album\_scrobbles}\SpecialCharTok{\textgreater{}}\DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+The resulting dataset has 755 artists and 6193 albums. Below are summary
+tables of artist-level and album-level statistics.
+
+\begin{table}[H]
+
+\caption{\label{tab:unnamed-chunk-27}Artist-level Summary Statistics}
+\centering
+\begin{tabular}[t]{llllllll}
+\toprule
+Variable & N & Mean & Std. Dev. & Min & Pctl. 25 & Pctl. 75 & Max\\
+\midrule
+Artist Scrobbles & 755 & 25642436.976 & 46461607.397 & 13 & 2743014.5 & 27194475.5 & 556318942\\
+Num. Albums & 755 & 8.203 & 9.879 & 1 & 2 & 10 & 85\\
+Num. Followers & 755 & 6158321.025 & 8536062.242 & 3790 & 2044827.5 & 6485957.5 & 88706690\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+
+\caption{\label{tab:unnamed-chunk-28}Album-level Summary Statistics}
+\centering
+\begin{tabular}[t]{llllllll}
+\toprule
+Variable & N & Mean & Std. Dev. & Min & Pctl. 25 & Pctl. 75 & Max\\
+\midrule
+Album Scrobbles &  &  &  &  &  &  & \\
+Num. Review Scores & 6193 & 5.347 & 3.566 & 1 & 2 & 9 & 27\\
+Avg. Review Scores & 6118 & 69.705 & 13.067 & 13.333 & 60 & 79.5 & 100\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\hypertarget{model}{%
+\section{Model}\label{model}}
+
+\hypertarget{model-1-linear-model-with-fixed-effects}{%
+\subsection{Model 1: Linear model with fixed
+effects}\label{model-1-linear-model-with-fixed-effects}}
+
+Let \(s_{ijt}\) denote the number of scrobbles that artist \(i\) has
+gotten on album \(j\) after \(t\) days have occured--i.e.~scrobbles are
+cumulative over time. Then we model scrobbles as follows:
+
+\[s_{ijt} = \alpha_i + \beta_t t + \beta_r r_{ij} + \epsilon_{ijt}\]
+where \(\alpha_0, \alpha_i, \beta_t, \beta_r\) are parameters,
+\(\alpha_i\) is an artist-specific fixed effect, \(r_{ij}\) is an
+aggregated measure of review scores, and \(\epsilon_{ijt}\) is a random
+innovation. The main advantage of this model is the inclusion of artist
+fixed effects, which account for unobserved artist-specific factors--for
+example, and artists inherent popularity.
+
+\hypertarget{model-2-log-transformed}{%
+\subsection{Model 2: Log-transformed}\label{model-2-log-transformed}}
+
+It is reasonable to think that the effect of review scores on scrobbles
+could be based on percentage changes rather than linear changes. In such
+a case, log transforming the key variables of interest may produce more
+realistic results:
+
+\[\log s_{ijt} = \alpha_i + \beta_t \log t + \beta_r \log r_{ij} + \epsilon_{ijt}\]
+
+\hypertarget{model-3-legacy-artists}{%
+\subsection{Model 3: Legacy artists}\label{model-3-legacy-artists}}
+
+As discussed in the introduction, one method I can use to account for
+endogeneity is to assume that correlations between album performance and
+review scores for legacy albums--that is, albums released prior to the
+existence of streaming platforms--is spurious. In other words, reviews
+of the album predict audience reception rather than influence audience
+behaviour. In this way, differences between legacy albums and newer
+albums should reflect the causal portion of \(\beta_r\), the parameter
+of interest.
+
+This is a diff-in-diff approach, and is modelled as follows. Let
+\(L_i=1\) if artist \(i\) is a legacy artist and 0 otherwise. Then,
+
+\[\log s_{ijt} = \alpha_i + \beta_t \log t + \beta_0 L_i + \beta_r (1-L_i) \log r_{ij} + \epsilon_{ijt}\]
+As for how to define legacy albums, for now I use the cutoff of albums
+released prior to 2010, as Spotify grew its user base in the early
+2010's.
+
+\hypertarget{note-on-standard-errors}{%
+\subsection{Note on Standard Errors}\label{note-on-standard-errors}}
+
+Note that it is likely that our data is clustered--that is, scrobbles
+from different albums of the same artist are correlated. While OLS
+estimates are still unbiased under this assumption, standard errors will
+be too small. Thus, I use cluster-robust standard errors in all
+analysis.
+
+\hypertarget{results}{%
+\section{Results}\label{results}}
+
+\hypertarget{estimation}{%
+\subsection{Estimation}\label{estimation}}
+
+Before estimation, I define a few variables:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# num days since album release}
+\NormalTok{estdata }\OtherTok{=}\NormalTok{ cleandata }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{releasedate =} \FunctionTok{as.Date}\NormalTok{(album\_releasedate)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{currdate =} \FunctionTok{ifelse}\NormalTok{(batch}\SpecialCharTok{==}\DecValTok{1}\NormalTok{,}\StringTok{"2021{-}12{-}05"}\NormalTok{,}\StringTok{"2021{-}12{-}15"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{currdate =} \FunctionTok{as.Date}\NormalTok{(currdate)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{numdays =} \FunctionTok{as.numeric}\NormalTok{(currdate }\SpecialCharTok{{-}}\NormalTok{ releasedate))}
+
+\CommentTok{\# classify legacy album}
+\NormalTok{estdata }\OtherTok{=}\NormalTok{ estdata }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{legacy =} \FunctionTok{as.numeric}\NormalTok{(releasedate}\SpecialCharTok{\textless{}}\FunctionTok{as.Date}\NormalTok{(}\StringTok{"2010{-}01{-}01"}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+Here I estimate each of the three models:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{model1 }\OtherTok{=} \FunctionTok{plm}\NormalTok{(album\_scrobbles }\SpecialCharTok{\textasciitilde{}}\NormalTok{ numdays }\SpecialCharTok{+}\NormalTok{ meanscores}
+\NormalTok{          ,}\AttributeTok{data=}\NormalTok{estdata}
+\NormalTok{          ,}\AttributeTok{index=}\StringTok{"artist\_id"}
+\NormalTok{          ,}\AttributeTok{model=}\StringTok{"within"}\NormalTok{)}
+\NormalTok{cov1       }\OtherTok{=} \FunctionTok{vcovHC}\NormalTok{(model1,}\AttributeTok{method=}\StringTok{"arellano"}\NormalTok{,}\AttributeTok{type=}\StringTok{"HC1"}\NormalTok{,}\AttributeTok{cluster=}\StringTok{"group"}\NormalTok{)}
+\NormalTok{robust.se1 }\OtherTok{=} \FunctionTok{sqrt}\NormalTok{(}\FunctionTok{diag}\NormalTok{(cov1))}
+
+\NormalTok{model2 }\OtherTok{=} \FunctionTok{plm}\NormalTok{(}\FunctionTok{log}\NormalTok{(album\_scrobbles) }\SpecialCharTok{\textasciitilde{}} \FunctionTok{log}\NormalTok{(numdays) }\SpecialCharTok{+} \FunctionTok{log}\NormalTok{(meanscores)}
+\NormalTok{          ,}\AttributeTok{data=}\NormalTok{estdata}
+\NormalTok{          ,}\AttributeTok{index=}\StringTok{"artist\_id"}
+\NormalTok{          ,}\AttributeTok{model=}\StringTok{"within"}\NormalTok{)}
+\NormalTok{cov2       }\OtherTok{=} \FunctionTok{vcovHC}\NormalTok{(model2,}\AttributeTok{method=}\StringTok{"arellano"}\NormalTok{,}\AttributeTok{type=}\StringTok{"HC1"}\NormalTok{,}\AttributeTok{cluster=}\StringTok{"group"}\NormalTok{)}
+\NormalTok{robust.se2 }\OtherTok{=} \FunctionTok{sqrt}\NormalTok{(}\FunctionTok{diag}\NormalTok{(cov2))}
+
+\NormalTok{estdata }\OtherTok{=}\NormalTok{ estdata }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{logscores\_diffindiff =}\NormalTok{ (}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{legacy)}\SpecialCharTok{*}\FunctionTok{log}\NormalTok{(meanscores))}
+\NormalTok{model3 }\OtherTok{=} \FunctionTok{plm}\NormalTok{(}\FunctionTok{log}\NormalTok{(album\_scrobbles) }\SpecialCharTok{\textasciitilde{}} \FunctionTok{log}\NormalTok{(numdays) }\SpecialCharTok{+}\NormalTok{ legacy }\SpecialCharTok{+}\NormalTok{ logscores\_diffindiff}
+\NormalTok{          ,}\AttributeTok{data=}\NormalTok{estdata}
+\NormalTok{          ,}\AttributeTok{index=}\StringTok{"artist\_id"}
+\NormalTok{          ,}\AttributeTok{model=}\StringTok{"within"}\NormalTok{)}
+\NormalTok{cov3       }\OtherTok{=} \FunctionTok{vcovHC}\NormalTok{(model3,}\AttributeTok{method=}\StringTok{"arellano"}\NormalTok{,}\AttributeTok{type=}\StringTok{"HC1"}\NormalTok{,}\AttributeTok{cluster=}\StringTok{"group"}\NormalTok{)}
+\NormalTok{robust.se3 }\OtherTok{=} \FunctionTok{sqrt}\NormalTok{(}\FunctionTok{diag}\NormalTok{(cov3))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{stargazer}\NormalTok{(model1,model2,model3}
+\NormalTok{          ,}\AttributeTok{se=}\FunctionTok{list}\NormalTok{(robust.se1,robust.se2,robust.se3)}
+\NormalTok{          ,}\AttributeTok{title=}\StringTok{"Regression Results"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\% Table created by stargazer v.5.2.2 by Marek Hlavac, Harvard
+University. E-mail: hlavac at fas.harvard.edu \% Date and time: Thu, Dec
+16, 2021 - 11:41:09 PM
+
+\begin{table}[!htbp] \centering 
+  \caption{Regression Results} 
+  \label{} 
+\begin{tabular}{@{\extracolsep{5pt}}lccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{3}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-4} 
+\\[-1.8ex] & album\_scrobbles & \multicolumn{2}{c}{log(album\_scrobbles)} \\ 
+\\[-1.8ex] & (1) & (2) & (3)\\ 
+\hline \\[-1.8ex] 
+ numdays & 142.101$^{***}$ &  &  \\ 
+  & (21.233) &  &  \\ 
+  & & & \\ 
+ meanscores & 59,910.570$^{***}$ &  &  \\ 
+  & (9,031.494) &  &  \\ 
+  & & & \\ 
+ log(numdays) &  & 0.493$^{***}$ & 0.447$^{***}$ \\ 
+  &  & (0.031) & (0.035) \\ 
+  & & & \\ 
+ log(meanscores) &  & 1.939$^{***}$ &  \\ 
+  &  & (0.150) &  \\ 
+  & & & \\ 
+ legacy &  &  & 7.417$^{***}$ \\ 
+  &  &  & (1.346) \\ 
+  & & & \\ 
+ logscores\_diffindiff &  &  & 1.711$^{***}$ \\ 
+  &  &  & (0.319) \\ 
+  & & & \\ 
+\hline \\[-1.8ex] 
+Observations & 5,688 & 5,688 & 5,688 \\ 
+R$^{2}$ & 0.021 & 0.105 & 0.078 \\ 
+Adjusted R$^{2}$ & $-$0.127 & $-$0.031 & $-$0.062 \\ 
+F Statistic & 54.181$^{***}$ (df = 2; 4938) & 289.532$^{***}$ (df = 2; 4938) & 139.580$^{***}$ (df = 3; 4937) \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{3}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+\end{tabular} 
+\end{table}
+
+\hypertarget{interpretation-of-results}{%
+\subsection{Interpretation of Results}\label{interpretation-of-results}}
+
+Table 5 presents results from each of the three models. I note first
+that in all models, average review scores are statistically significant
+predictors of number of scrobbles at 1\%. To interpet the model, let's
+use an example of an album that has 100,000 scrobbles and an average
+review score of 50. If they increased their review score to an 80, model
+1 predicts they would gain about 1.8 million scrobbles. Model 2 predicts
+they would gain about 250,000, and Model 3 predicts they would gain
+about 220,000.
+
+Thus, we see first that the log-transformed version provides more
+realistic predictions as expected. This is also reflected in better
+model fit statistcs. Furthermore, we observe that the diff-in-diff
+version predicts a smaller gain, though not much different from the
+model without this component.
+
+\hypertarget{conclusions-future-work}{%
+\section{Conclusions / Future Work}\label{conclusions-future-work}}
+
+At the onset of this project, I started with three primary research
+questions:
+
+\begin{itemize}
+\tightlist
+\item
+  Do music critics affect album performance?
+\item
+  Differences between user and expert scores?
+\item
+  Difference in new and old media?
+\end{itemize}
+
+This paper does some investigation into the first question, although
+time and data constraints preclude me from looking at the second and
+third. After accounting for artist fixed effects, and using a
+diff-in-diff approach to account for spurious correlations, we find that
+review scores do seem to have an effect on album performance, at least
+based on our current data and assumptions.
+
+Future work should focus on performing robustness checks on my current
+analysis. Furthermore, additional controls could be included in the
+model. Easy choices using similar data approaches would be track
+information (e.g.~perhaps ``happier'' albums get more listens AND better
+reviews) from the Spotify API and demographic information about the
+artists from their Wikipedia pages.
+
+Additional work could be directed at fine tuning my data algorithm.
+While I know by example that it seems to work in many cases, it would be
+great to do a systematic analysis to determine how effective my method
+is. For example, what is the nature of the nearly half of albums that
+had no reviews?
+
+Further, I would reconsider how to overcome data limitations with
+respect to listening numbers (Last.FM has potential selection issues as
+discussed) and user scores (to analyze user vs expert score effects).
+The former could be purchased from chartmasters.org, while the latter
+theoretically exists on metacritic--perhaps one day they will allow
+access to the data via API.
+
+Finally, in the long term it would be interesting to merge this data
+with review scores from theneedledrop's YouTube channel to study old vs
+new media effects, particularly by genre. theneedledrop puts his review
+scores in the description of his videos, allowing one in theory to
+access them via YouTube's API.
+
+\newpage
+
+\hypertarget{appendix-i-web-scraping-critic-and-user-scores}{%
+\section{Appendix I: Web Scraping Critic and User
+Scores}\label{appendix-i-web-scraping-critic-and-user-scores}}
+
+Here is code to scrape critic and user scores from Metacritic, using
+Drake's Certified Lover Boy as an example. I include it here to document
+my work, but do NOT suggest using it on a mass scale as web scraping is
+prohibited by their terms of service.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# get album name in right format}
+\NormalTok{album\_name\_meta }\OtherTok{=} \FunctionTok{tolower}\NormalTok{(tm}\SpecialCharTok{::}\FunctionTok{removePunctuation}\NormalTok{(album\_name))}
+\NormalTok{album\_name\_meta }\OtherTok{=}\NormalTok{ album\_name\_meta }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{str\_replace\_all}\NormalTok{(}\StringTok{"\&"}\NormalTok{, }\StringTok{""}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{tolower}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{str\_squish}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{str\_replace\_all}\NormalTok{(}\StringTok{" "}\NormalTok{, }\StringTok{"{-}"}\NormalTok{)}
+
+\CommentTok{\# get artists name in right format}
+\NormalTok{arist\_name\_meta }\OtherTok{=} \FunctionTok{tolower}\NormalTok{(}\FunctionTok{removePunctuation}\NormalTok{(artist\_name))}
+\NormalTok{artist\_name\_meta }\OtherTok{=}\NormalTok{ arist\_name\_meta }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{str\_replace\_all}\NormalTok{(}\StringTok{"\&"}\NormalTok{, }\StringTok{""}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{tolower}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{str\_squish}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{str\_replace\_all}\NormalTok{(}\StringTok{" "}\NormalTok{, }\StringTok{"{-}"}\NormalTok{)}
+
+\CommentTok{\# critic scores}
+\CommentTok{\# read in html}
+\NormalTok{url\_critic }\OtherTok{=} \FunctionTok{paste0}\NormalTok{(}\StringTok{\textquotesingle{}https://www.metacritic.com/music/\textquotesingle{}}
+\NormalTok{              ,album\_name\_meta,}\StringTok{\textquotesingle{}/\textquotesingle{}}
+\NormalTok{              ,artist\_name\_meta}
+\NormalTok{              ,}\StringTok{\textquotesingle{}/critic{-}reviews\textquotesingle{}}\NormalTok{)}
+\NormalTok{url\_user   }\OtherTok{=} \FunctionTok{paste0}\NormalTok{(}\StringTok{\textquotesingle{}https://www.metacritic.com/music/\textquotesingle{}}
+\NormalTok{              ,album\_name\_meta,}\StringTok{\textquotesingle{}/\textquotesingle{}}
+\NormalTok{              ,artist\_name\_meta}
+\NormalTok{              ,}\StringTok{\textquotesingle{}/user{-}reviews\textquotesingle{}}\NormalTok{)}
+
+\ControlFlowTok{if}\NormalTok{ (}\SpecialCharTok{!}\FunctionTok{http\_error}\NormalTok{(url\_critic)) \{}
+  
+\NormalTok{  webpage }\OtherTok{=} \FunctionTok{read\_html}\NormalTok{(url\_critic)}
+
+  \CommentTok{\# critic scores}
+\NormalTok{  xpath }\OtherTok{=} \StringTok{\textquotesingle{}//*[(@id = "main")]//*[contains(concat( " ", @class, " " ), concat( " ", "indiv", " " ))]\textquotesingle{}}
+\NormalTok{  criticscores }\OtherTok{=} \FunctionTok{html\_nodes}\NormalTok{(webpage, }\AttributeTok{xpath=}\NormalTok{xpath)}
+\NormalTok{  criticscores }\OtherTok{=} \FunctionTok{html\_text}\NormalTok{(criticscores,}\AttributeTok{trim=}\NormalTok{T)}
+\NormalTok{  criticscores }\OtherTok{=} \FunctionTok{as.numeric}\NormalTok{(criticscores)}
+
+  \CommentTok{\# user scores}
+  \CommentTok{\# read the aggregated score}
+\NormalTok{  webpage }\OtherTok{=} \FunctionTok{read\_html}\NormalTok{(url\_user)}
+\NormalTok{  xpath }\OtherTok{=} \StringTok{\textquotesingle{}//*[contains(concat( " ", @class, " " ), concat( " ", "large", " " ))]\textquotesingle{}}
+\NormalTok{  userscore\_agg }\OtherTok{=} \FunctionTok{html\_nodes}\NormalTok{(webpage, }\AttributeTok{xpath=}\NormalTok{xpath)}
+\NormalTok{  userscore\_agg }\OtherTok{=} \FunctionTok{html\_text}\NormalTok{(userscore\_agg,}\AttributeTok{trim=}\NormalTok{T)}
+\NormalTok{  userscore\_agg }\OtherTok{=} \FunctionTok{as.numeric}\NormalTok{(userscore\_agg[}\DecValTok{1}\NormalTok{])}
+
+  \CommentTok{\# read number positives, neutral, negative}
+\NormalTok{  xpath}\OtherTok{=}\StringTok{\textquotesingle{}//*[(@id = "main")]//*[contains(concat( " ", @class, " " ), concat( " ", "count", " " ))]\textquotesingle{}}
+\NormalTok{  userscore\_meta }\OtherTok{=} \FunctionTok{html\_nodes}\NormalTok{(webpage, }\AttributeTok{xpath=}\NormalTok{xpath)}
+\NormalTok{  userscore\_meta }\OtherTok{=} \FunctionTok{html\_text}\NormalTok{(userscore\_meta,}\AttributeTok{trim=}\NormalTok{T)}
+\NormalTok{  userscore\_meta }\OtherTok{=} \FunctionTok{as.numeric}\NormalTok{(userscore\_meta[}\DecValTok{2}\SpecialCharTok{:}\DecValTok{4}\NormalTok{])}
+\NormalTok{\}}
+
+\NormalTok{criticscores}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 80 72 70 68 67 67 66 60 60 60 60 60 50 50 45 40 40 40 40 40
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{userscore\_agg}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3.5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{userscore\_meta}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 237 186 655
+\end{verbatim}
+
+\newpage
+
+\hypertarget{appendix-ii-scraping-wikipedia-articles-for-critic-scores}{%
+\section{Appendix II: Scraping Wikipedia Articles for Critic
+Scores}\label{appendix-ii-scraping-wikipedia-articles-for-critic-scores}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Function for converting letter grades to number grades}
+\NormalTok{lettergrade\_num }\OtherTok{=} \ControlFlowTok{function}\NormalTok{(x) \{}
+  \ControlFlowTok{if}\NormalTok{ (x}\SpecialCharTok{==}\StringTok{"A+"} \SpecialCharTok{|}\NormalTok{ x}\SpecialCharTok{==}\StringTok{"A"}\NormalTok{) \{}
+    \FunctionTok{return}\NormalTok{(}\StringTok{"100"}\NormalTok{)}
+\NormalTok{  \} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (x}\SpecialCharTok{==}\StringTok{"A{-}"}\NormalTok{) \{}
+    \FunctionTok{return}\NormalTok{(}\StringTok{"91"}\NormalTok{)}
+\NormalTok{  \} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (x}\SpecialCharTok{==}\StringTok{"B+"}\NormalTok{) \{}
+    \FunctionTok{return}\NormalTok{(}\StringTok{"83"}\NormalTok{)}
+\NormalTok{  \} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (x}\SpecialCharTok{==}\StringTok{"B"}\NormalTok{) \{}
+    \FunctionTok{return}\NormalTok{(}\StringTok{"75"}\NormalTok{)}
+\NormalTok{  \} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (x}\SpecialCharTok{==}\StringTok{"B{-}"}\NormalTok{) \{}
+    \FunctionTok{return}\NormalTok{(}\StringTok{"67"}\NormalTok{)}
+\NormalTok{  \} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (x}\SpecialCharTok{==}\StringTok{"C+"}\NormalTok{) \{}
+    \FunctionTok{return}\NormalTok{(}\StringTok{"58"}\NormalTok{)}
+\NormalTok{  \} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (x}\SpecialCharTok{==}\StringTok{"C"}\NormalTok{) \{}
+    \FunctionTok{return}\NormalTok{(}\StringTok{"50"}\NormalTok{)}
+\NormalTok{  \} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (x}\SpecialCharTok{==}\StringTok{"C{-}"}\NormalTok{) \{}
+    \FunctionTok{return}\NormalTok{(}\StringTok{"42"}\NormalTok{)}
+\NormalTok{  \} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (x}\SpecialCharTok{==}\StringTok{"D+"}\NormalTok{) \{}
+    \FunctionTok{return}\NormalTok{(}\StringTok{"33"}\NormalTok{)}
+\NormalTok{  \} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (x}\SpecialCharTok{==}\StringTok{"D"}\NormalTok{) \{}
+    \FunctionTok{return}\NormalTok{(}\StringTok{"25"}\NormalTok{)}
+\NormalTok{  \} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (x}\SpecialCharTok{==}\StringTok{"D{-}"}\NormalTok{) \{}
+    \FunctionTok{return}\NormalTok{(}\StringTok{"16"}\NormalTok{)}
+\NormalTok{  \} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (x}\SpecialCharTok{==}\StringTok{"F+"}\NormalTok{) \{}
+    \FunctionTok{return}\NormalTok{(}\StringTok{"8"}\NormalTok{)}
+\NormalTok{  \} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (x}\SpecialCharTok{==}\StringTok{"F"} \SpecialCharTok{|}\NormalTok{ x}\SpecialCharTok{==}\StringTok{"F{-}"}\NormalTok{) \{}
+    \FunctionTok{return}\NormalTok{(}\StringTok{"0"}\NormalTok{)}
+\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{}
+    \FunctionTok{return}\NormalTok{(x)}
+\NormalTok{  \}}
+\NormalTok{\}}
+
+\CommentTok{\# get web page content}
+\NormalTok{webpage }\OtherTok{=} \FunctionTok{read\_html}\NormalTok{(webpage}\SpecialCharTok{$}\NormalTok{parse}\SpecialCharTok{$}\NormalTok{text}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{*}\StringTok{\textasciigrave{}}\NormalTok{)}
+\NormalTok{xpath}\OtherTok{=}\StringTok{\textquotesingle{}//*[contains(concat( " ", @class, " " ), concat( " ", "floatright", " " ))]//td\textquotesingle{}}
+\NormalTok{wikiscores }\OtherTok{=} \FunctionTok{html\_nodes}\NormalTok{(webpage, }\AttributeTok{xpath=}\NormalTok{xpath)}
+\NormalTok{wikiscores\_stars }\OtherTok{=} \FunctionTok{html\_attr}\NormalTok{(}\FunctionTok{html\_element}\NormalTok{(wikiscores,}\AttributeTok{css=}\StringTok{\textquotesingle{}span\textquotesingle{}}\NormalTok{),}\StringTok{\textquotesingle{}title\textquotesingle{}}\NormalTok{)}
+\NormalTok{wikiscores }\OtherTok{=} \FunctionTok{html\_text}\NormalTok{(wikiscores,}\AttributeTok{trim=}\NormalTok{T)}
+
+  \CommentTok{\# Convert scores to numeric out of 100}
+\NormalTok{  wikiscores\_data }\OtherTok{=} \FunctionTok{as.data.frame}\NormalTok{(}\FunctionTok{matrix}\NormalTok{(wikiscores,}\AttributeTok{ncol=}\DecValTok{2}\NormalTok{,}\AttributeTok{byrow=}\NormalTok{T))}
+\NormalTok{  wikiscores\_stars\_data }\OtherTok{=} \FunctionTok{as.data.frame}\NormalTok{(}\FunctionTok{matrix}\NormalTok{(wikiscores\_stars,}\AttributeTok{ncol=}\DecValTok{2}\NormalTok{,}\AttributeTok{byrow=}\NormalTok{T))}
+  \CommentTok{\# deal with specific review websites}
+\NormalTok{  selector }\OtherTok{=}\NormalTok{ (}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(wikiscores\_stars\_data}\SpecialCharTok{$}\NormalTok{V2) }\SpecialCharTok{\&} \SpecialCharTok{!}\NormalTok{(}\FunctionTok{tolower}\NormalTok{(wikiscores\_data}\SpecialCharTok{$}\NormalTok{V1)}\SpecialCharTok{==}\StringTok{"tom hull – on the Web"}\NormalTok{))}
+\NormalTok{  wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2[selector] }\OtherTok{=}\NormalTok{ wikiscores\_stars\_data}\SpecialCharTok{$}\NormalTok{V2[selector]}
+\NormalTok{  wikiscores\_data }\OtherTok{=}\NormalTok{ wikiscores\_data[wikiscores\_data}\SpecialCharTok{$}\NormalTok{V1}\SpecialCharTok{!=}\StringTok{"Metacritic"}\NormalTok{,]}
+\NormalTok{  wikiscores\_data }\OtherTok{=}\NormalTok{ wikiscores\_data[wikiscores\_data}\SpecialCharTok{$}\NormalTok{V1}\SpecialCharTok{!=}\StringTok{"AnyDecentMusic?"}\NormalTok{,]}
+  \CommentTok{\# remove [] and content inside}
+\NormalTok{  wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2 }\OtherTok{=} \FunctionTok{gsub}\NormalTok{(}\StringTok{"}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{[.*?}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{]"}\NormalTok{,}\StringTok{""}\NormalTok{,wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2)}
+  \CommentTok{\# remove () but NOT CONTENT (sometimes the score is contained within () )}
+\NormalTok{  wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2 }\OtherTok{=} \FunctionTok{str\_replace}\NormalTok{(wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2,}\StringTok{"}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{("}\NormalTok{,}\StringTok{""}\NormalTok{)}
+\NormalTok{  wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2 }\OtherTok{=} \FunctionTok{str\_replace}\NormalTok{(wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2,}\StringTok{"}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{)"}\NormalTok{,}\StringTok{""}\NormalTok{)}
+  \CommentTok{\# fix ill{-}behaved special characters}
+\NormalTok{  wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2 }\OtherTok{=} \FunctionTok{sapply}\NormalTok{(wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2 , }\ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{URLencode}\NormalTok{(x) )}
+\NormalTok{  wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2 }\OtherTok{=} \FunctionTok{str\_replace}\NormalTok{(wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2,}\StringTok{"\%E2\%88\%92"}\NormalTok{,}\StringTok{"{-}"}\NormalTok{)}
+\NormalTok{  wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2 }\OtherTok{=} \FunctionTok{str\_replace}\NormalTok{(wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2,}\StringTok{"\%E2\%80\%93"}\NormalTok{,}\StringTok{"{-}"}\NormalTok{)}
+\NormalTok{  wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2 }\OtherTok{=} \FunctionTok{str\_replace}\NormalTok{(wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2,}\StringTok{"\%E2\%80\%94"}\NormalTok{,}\StringTok{"{-}"}\NormalTok{)}
+\NormalTok{  wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2 }\OtherTok{=} \FunctionTok{sapply}\NormalTok{(wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2 , }\ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{URLdecode}\NormalTok{(x) )}
+\NormalTok{  wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2 }\OtherTok{=} \FunctionTok{str\_replace}\NormalTok{(wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2,}\StringTok{"}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{?}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{\^{}}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{\textquotesingle{}"}\NormalTok{,}\StringTok{"{-}"}\NormalTok{)}
+  \CommentTok{\# covert letter grade to numeric}
+\NormalTok{  wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2 }\OtherTok{=} \FunctionTok{sapply}\NormalTok{(}\FunctionTok{str\_trim}\NormalTok{(wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2) , lettergrade\_num)}
+  \CommentTok{\# remove unit of measure (stars or discs)}
+\NormalTok{  wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2 }\OtherTok{=}\NormalTok{ stringr}\SpecialCharTok{::}\FunctionTok{str\_replace}\NormalTok{(wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2,}\StringTok{"stars"}\NormalTok{,}\StringTok{""}\NormalTok{)}
+\NormalTok{  wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2 }\OtherTok{=}\NormalTok{ stringr}\SpecialCharTok{::}\FunctionTok{str\_replace}\NormalTok{(wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2,}\StringTok{"discs"}\NormalTok{,}\StringTok{""}\NormalTok{)}
+  \CommentTok{\# remove \%\textquotesingle{}s}
+\NormalTok{  wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2 }\OtherTok{=}\NormalTok{ stringr}\SpecialCharTok{::}\FunctionTok{str\_replace}\NormalTok{(wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2,}\StringTok{"\%"}\NormalTok{,}\StringTok{""}\NormalTok{)}
+  \CommentTok{\# remove remaining scores that contain no numbers}
+\NormalTok{  wikiscores\_data }\OtherTok{=}\NormalTok{ wikiscores\_data[}\FunctionTok{grepl}\NormalTok{(}\StringTok{"}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{d"}\NormalTok{,wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2),]}
+  
+  \CommentTok{\# convert to numeric}
+\NormalTok{  wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2 }\OtherTok{=} \FunctionTok{sapply}\NormalTok{(wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2,}
+                              \ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{tryCatch}\NormalTok{(}\FunctionTok{eval}\NormalTok{(}\FunctionTok{parse}\NormalTok{(}\AttributeTok{text=}\NormalTok{x)),}
+                                                   \AttributeTok{error=}\ControlFlowTok{function}\NormalTok{(e)\{\},}
+                                                   \AttributeTok{finally=}\ConstantTok{NULL}\NormalTok{) )}
+  
+  \CommentTok{\# final set of scores to put in dataset}
+\NormalTok{  wikiscores\_data }\OtherTok{=}\NormalTok{ wikiscores\_data[}\SpecialCharTok{!}\FunctionTok{sapply}\NormalTok{(wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2,is.null),]}
+\NormalTok{  wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2 }\OtherTok{=} \FunctionTok{as.numeric}\NormalTok{(wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2)}
+\NormalTok{  wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2[wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2}\SpecialCharTok{\textless{}=}\DecValTok{1}\NormalTok{] }\OtherTok{=} \DecValTok{100}\SpecialCharTok{*}\NormalTok{wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2[wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2}\SpecialCharTok{\textless{}=}\DecValTok{1}\NormalTok{]}
+  
+\NormalTok{  xpath }\OtherTok{=} \StringTok{\textquotesingle{}//*[contains(concat( " ", @class, " " ), concat( " ", "published", " " ))]\textquotesingle{}}
+\NormalTok{  release\_date\_wiki }\OtherTok{=} \FunctionTok{html\_nodes}\NormalTok{(webpage, }\AttributeTok{xpath=}\NormalTok{xpath)}
+\NormalTok{  release\_date\_wiki }\OtherTok{=} \FunctionTok{html\_text}\NormalTok{(release\_date\_wiki,}\AttributeTok{trim=}\NormalTok{T)}
+\NormalTok{  release\_date\_wiki }\OtherTok{=}\NormalTok{ release\_date\_wiki[}\DecValTok{2}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\newpage
+
+\hypertarget{appendix-iii-full-code-for-generating-data}{%
+\section{Appendix III: Full Code for Generating
+Data}\label{appendix-iii-full-code-for-generating-data}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# load packages and define helper functions}
+\FunctionTok{source}\NormalTok{(}\StringTok{"Header.R"}\NormalTok{)}
+
+\CommentTok{\# get list of artist names}
+\FunctionTok{load}\NormalTok{(}\StringTok{"artistnamelist.RData"}\NormalTok{) }\CommentTok{\# loads object "artistnames"}
+
+\CommentTok{\# For each name in the list, create data of albums and reviews}
+\NormalTok{artistdata }\OtherTok{=} \ConstantTok{NULL}
+\ControlFlowTok{for}\NormalTok{ (aname }\ControlFlowTok{in}\NormalTok{ artistnames[}\DecValTok{694}\SpecialCharTok{:}\DecValTok{1000}\NormalTok{]) \{}
+
+\DocumentationTok{\#\# SPOTIFY DATA \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+
+\NormalTok{  id }\OtherTok{=} \StringTok{\textquotesingle{}3f766570eef74a6986a646bf7dd73102\textquotesingle{}}
+\NormalTok{  secret }\OtherTok{=} \StringTok{\textquotesingle{}5f884eb17551445ba76ab797ec7505b6\textquotesingle{}}
+  \FunctionTok{Sys.setenv}\NormalTok{(}\AttributeTok{SPOTIFY\_CLIENT\_ID =}\NormalTok{ id)}
+  \FunctionTok{Sys.setenv}\NormalTok{(}\AttributeTok{SPOTIFY\_CLIENT\_SECRET =}\NormalTok{ secret)}
+\NormalTok{  access\_token }\OtherTok{=}\NormalTok{ spotifyr}\SpecialCharTok{::}\FunctionTok{get\_spotify\_access\_token}\NormalTok{()}
+
+  \CommentTok{\# artist info}
+\NormalTok{  search }\OtherTok{=}\NormalTok{ spotifyr}\SpecialCharTok{::}\FunctionTok{search\_spotify}\NormalTok{(}\AttributeTok{q=}\NormalTok{aname, }\AttributeTok{type=}\StringTok{"artist"}\NormalTok{)}
+\NormalTok{  artist\_id }\OtherTok{=}\NormalTok{ search}\SpecialCharTok{$}\NormalTok{id[}\DecValTok{1}\NormalTok{]}
+\NormalTok{  artist }\OtherTok{=}\NormalTok{ spotifyr}\SpecialCharTok{::}\FunctionTok{get\_artist}\NormalTok{(}\AttributeTok{id=}\NormalTok{artist\_id, }\AttributeTok{authorization=}\NormalTok{access\_token)}
+\NormalTok{  artist\_name }\OtherTok{=}\NormalTok{ artist}\SpecialCharTok{$}\NormalTok{name}
+
+  \CommentTok{\# album list}
+\NormalTok{  albums }\OtherTok{=}\NormalTok{ spotifyr}\SpecialCharTok{::}\FunctionTok{get\_artist\_albums}\NormalTok{(}\AttributeTok{id=}\NormalTok{artist\_id,}\AttributeTok{include\_groups=}\StringTok{"album"}\NormalTok{,}\AttributeTok{market=}\StringTok{"CA"}\NormalTok{,}\AttributeTok{limit=}\DecValTok{50}\NormalTok{,}\AttributeTok{authorization=}\NormalTok{access\_token)}
+\NormalTok{  nalb }\OtherTok{=} \FunctionTok{length}\NormalTok{(albums)}
+\NormalTok{  offset }\OtherTok{=} \DecValTok{1}
+  \ControlFlowTok{while}\NormalTok{(nalb}\SpecialCharTok{\textgreater{}}\DecValTok{0}\NormalTok{) \{}
+\NormalTok{      offset }\OtherTok{=}\NormalTok{ offset }\SpecialCharTok{+} \DecValTok{50}
+\NormalTok{      newalbs }\OtherTok{=}\NormalTok{ spotifyr}\SpecialCharTok{::}\FunctionTok{get\_artist\_albums}\NormalTok{(}\AttributeTok{id=}\NormalTok{artist\_id,}\AttributeTok{include\_groups=}\StringTok{"album"}\NormalTok{,}\AttributeTok{market=}\StringTok{"CA"}\NormalTok{,}\AttributeTok{limit=}\DecValTok{50}\NormalTok{,}\AttributeTok{offset=}\NormalTok{offset,}\AttributeTok{authorization=}\NormalTok{access\_token)}
+\NormalTok{      nalb }\OtherTok{=} \FunctionTok{length}\NormalTok{(newalbs)}
+\NormalTok{      albums }\OtherTok{=} \FunctionTok{rbind}\NormalTok{(albums,newalbs)}
+\NormalTok{  \}}
+  
+  
+  \CommentTok{\# Dedupe album list}
+\NormalTok{  albums}\SpecialCharTok{$}\NormalTok{name }\OtherTok{=} \FunctionTok{gsub}\NormalTok{(}\StringTok{"}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{s*}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{([\^{}}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{)]+}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{)"}\NormalTok{,}\StringTok{""}\NormalTok{,albums}\SpecialCharTok{$}\NormalTok{name) }\CommentTok{\# remove "deluxe" versions, etc.}
+  \ControlFlowTok{if}\NormalTok{(}\FunctionTok{length}\NormalTok{(albums}\SpecialCharTok{$}\NormalTok{name)}\SpecialCharTok{\textgreater{}}\DecValTok{0}\NormalTok{) \{ }\CommentTok{\# only proceed if they have albums!}
+\NormalTok{    albums }\OtherTok{=}\NormalTok{ albums[}\SpecialCharTok{!}\FunctionTok{duplicated}\NormalTok{(albums}\SpecialCharTok{$}\NormalTok{name),]}
+\NormalTok{    albums }\OtherTok{=}\NormalTok{ albums[}\SpecialCharTok{!}\FunctionTok{duplicated}\NormalTok{(albums}\SpecialCharTok{$}\NormalTok{release\_date),]}
+\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{}
+    \FunctionTok{print}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\StringTok{"Skipping "}\NormalTok{, artist\_name, }\StringTok{"{-}{-}{-}{-}no albums!"}\NormalTok{))}
+\NormalTok{  \}}
+
+  \CommentTok{\# loop through albums}
+\NormalTok{  album\_ids }\OtherTok{=}\NormalTok{ albums}\SpecialCharTok{$}\NormalTok{id}
+  \ControlFlowTok{for}\NormalTok{ (id }\ControlFlowTok{in}\NormalTok{ album\_ids) \{}
+\NormalTok{    example\_album}\OtherTok{=}\NormalTok{spotifyr}\SpecialCharTok{::}\FunctionTok{get\_album}\NormalTok{(}\AttributeTok{id=}\NormalTok{id,}\AttributeTok{authorization=}\NormalTok{access\_token)}
+
+    \DocumentationTok{\#\# LAST FM \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+\NormalTok{    api\_key }\OtherTok{=} \StringTok{"749b4800592668088e8a563845cf906f"}
+    \CommentTok{\# \textquotesingle{}\&\textquotesingle{} and \textquotesingle{}+\textquotesingle{} and \textquotesingle{}\#\textquotesingle{} cause issues}
+\NormalTok{    url\_artist }\OtherTok{=}\NormalTok{ stringr}\SpecialCharTok{::}\FunctionTok{str\_replace\_all}\NormalTok{(artist\_name,}\StringTok{"}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{+"}\NormalTok{,}\StringTok{"\%2B"}\NormalTok{)}
+\NormalTok{    url\_album }\OtherTok{=}\NormalTok{ stringr}\SpecialCharTok{::}\FunctionTok{str\_replace\_all}\NormalTok{(example\_album}\SpecialCharTok{$}\NormalTok{name,}\StringTok{"}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{+"}\NormalTok{,}\StringTok{"\%2B"}\NormalTok{)}
+\NormalTok{    url\_artist }\OtherTok{=}\NormalTok{ stringr}\SpecialCharTok{::}\FunctionTok{str\_replace\_all}\NormalTok{(url\_artist,}\StringTok{"\&"}\NormalTok{,}\StringTok{"\%26"}\NormalTok{)}
+\NormalTok{    url\_album }\OtherTok{=}\NormalTok{ stringr}\SpecialCharTok{::}\FunctionTok{str\_replace\_all}\NormalTok{(url\_album,}\StringTok{"\&"}\NormalTok{,}\StringTok{"\%26"}\NormalTok{)}
+\NormalTok{    url\_artist }\OtherTok{=}\NormalTok{ stringr}\SpecialCharTok{::}\FunctionTok{str\_replace\_all}\NormalTok{(url\_artist,}\StringTok{"\#"}\NormalTok{,}\StringTok{"\%23"}\NormalTok{)}
+\NormalTok{    url\_album }\OtherTok{=}\NormalTok{ stringr}\SpecialCharTok{::}\FunctionTok{str\_replace\_all}\NormalTok{(url\_album,}\StringTok{"\#"}\NormalTok{,}\StringTok{"\%23"}\NormalTok{)}
+
+\NormalTok{    url }\OtherTok{=} \FunctionTok{paste0}\NormalTok{(}\StringTok{"http://ws.audioscrobbler.com/2.0/"}\NormalTok{,}
+                 \StringTok{"?method=album.getinfo"}\NormalTok{,}
+                 \StringTok{"\&api\_key="}\NormalTok{,api\_key,}
+                 \StringTok{"\&artist="}\NormalTok{, }\FunctionTok{gsub}\NormalTok{(}\StringTok{" "}\NormalTok{, }\StringTok{"+"}\NormalTok{, url\_artist),}
+                 \StringTok{"\&album="}\NormalTok{, }\FunctionTok{gsub}\NormalTok{(}\StringTok{" "}\NormalTok{, }\StringTok{"+"}\NormalTok{, url\_album),}
+                 \StringTok{"\&format=json"}\NormalTok{)}
+\NormalTok{    data\_json }\OtherTok{=}\NormalTok{ httr}\SpecialCharTok{::}\FunctionTok{GET}\NormalTok{(url)}
+\NormalTok{    data\_json }\OtherTok{=}\NormalTok{ jsonlite}\SpecialCharTok{::}\FunctionTok{fromJSON}\NormalTok{(}\FunctionTok{rawToChar}\NormalTok{(data\_json}\SpecialCharTok{$}\NormalTok{content))}
+\NormalTok{    album\_scrobbles }\OtherTok{=} \FunctionTok{as.integer}\NormalTok{(data\_json}\SpecialCharTok{$}\NormalTok{album}\SpecialCharTok{$}\NormalTok{playcount)}
+    \ControlFlowTok{if}\NormalTok{ (}\FunctionTok{length}\NormalTok{(album\_scrobbles)}\SpecialCharTok{==}\DecValTok{0}\NormalTok{) \{ }\CommentTok{\# handle missing scrobbles}
+\NormalTok{      album\_scrobbles }\OtherTok{=} \ConstantTok{NA}
+\NormalTok{    \}}
+    \DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+
+    \DocumentationTok{\#\# CRITIC SCORES FROM WIKIPEDIA \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+
+    \CommentTok{\# Use google api to search for the (most likely) correct wikipedia page}
+    \CommentTok{\# (note that this is a custom search api that searches only wikipedia)}
+\NormalTok{     google.key }\OtherTok{=} \StringTok{\textquotesingle{}AIzaSyBKJ9b9c1zKEEUs{-}g2PTrosIHO8epctAls\textquotesingle{}}
+\NormalTok{     google.cx }\OtherTok{=} \StringTok{\textquotesingle{}2fb4b305ff06c300d\textquotesingle{}}
+     
+     \CommentTok{\# keywords to be searched in google, separated by \textquotesingle{}+\textquotesingle{}}
+\NormalTok{     keyword }\OtherTok{=} \FunctionTok{paste0}\NormalTok{(artist\_name,}\StringTok{" "}\NormalTok{,example\_album}\SpecialCharTok{$}\NormalTok{name,}\StringTok{" "}\NormalTok{,}\StringTok{"album"}\NormalTok{)}
+\NormalTok{     keyword }\OtherTok{=} \FunctionTok{gsub}\NormalTok{(}\StringTok{"[[:punct:]]"}\NormalTok{, }\StringTok{" "}\NormalTok{, keyword)}
+\NormalTok{     keyword }\OtherTok{=}\NormalTok{ stringr}\SpecialCharTok{::}\FunctionTok{str\_squish}\NormalTok{(keyword)}
+\NormalTok{     keyword }\OtherTok{=} \FunctionTok{gsub}\NormalTok{(}\StringTok{" "}\NormalTok{, }\StringTok{"+"}\NormalTok{, keyword)}
+    
+     \CommentTok{\# api call}
+\NormalTok{     url }\OtherTok{=} \FunctionTok{paste0}\NormalTok{(}\StringTok{"https://www.googleapis.com/customsearch/v1?"}
+\NormalTok{                  , }\StringTok{"key="}\NormalTok{, google.key}
+\NormalTok{                  , }\StringTok{"\&q="}\NormalTok{, keyword}
+\NormalTok{                  , }\StringTok{"\&gl=us"}         
+\NormalTok{                  , }\StringTok{"\&hl=en"}                
+\NormalTok{                  , }\StringTok{"\&cx="}\NormalTok{, google.cx}
+\NormalTok{                  , }\StringTok{"\&fields=items(link)"}
+\NormalTok{     )}
+\NormalTok{     googlesearch }\OtherTok{=}\NormalTok{ httr}\SpecialCharTok{::}\FunctionTok{GET}\NormalTok{(url)}
+\NormalTok{     content }\OtherTok{=} \FunctionTok{rawToChar}\NormalTok{(googlesearch}\SpecialCharTok{$}\NormalTok{content); }\FunctionTok{Encoding}\NormalTok{(content) }\OtherTok{=} \StringTok{"UTF{-}8"}
+\NormalTok{     searchresults }\OtherTok{=}\NormalTok{ jsonlite}\SpecialCharTok{::}\FunctionTok{fromJSON}\NormalTok{(content)}
+     
+     \ControlFlowTok{if}\NormalTok{ (}\FunctionTok{length}\NormalTok{(searchresults)}\SpecialCharTok{!=}\DecValTok{0}\NormalTok{) \{ }\CommentTok{\# only proceed if google search finds at least one url}
+     
+\NormalTok{       wikiurl }\OtherTok{=}\NormalTok{ searchresults}\SpecialCharTok{$}\NormalTok{items}\SpecialCharTok{$}\NormalTok{link[}\DecValTok{1}\NormalTok{]}
+  
+      \CommentTok{\# Wikipedia API {-}\textgreater{} using the page title, parse the album page and extract album scores}
+        \CommentTok{\# do some cleaning to the url to get the proper page name}
+          \CommentTok{\# deal with special characters}
+\NormalTok{          pgname }\OtherTok{=}\NormalTok{ curl}\SpecialCharTok{::}\FunctionTok{curl\_unescape}\NormalTok{(wikiurl)}
+          \CommentTok{\# keep the end of the url {-}\textgreater{} the page name wikipedia api wants}
+\NormalTok{          pgname }\OtherTok{=} \FunctionTok{gsub}\NormalTok{(}\StringTok{"https://.*}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{.wikipedia}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{.org.*/"}\NormalTok{,}\StringTok{""}\NormalTok{,pgname)}
+        
+        \CommentTok{\# get the language of the wiki article}
+\NormalTok{          wikilang }\OtherTok{=} \FunctionTok{gsub}\NormalTok{(}\StringTok{"https://"}\NormalTok{,}\StringTok{""}\NormalTok{,wikiurl)}
+\NormalTok{          wikilang }\OtherTok{=} \FunctionTok{gsub}\NormalTok{(}\StringTok{"}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{.wikipedia.org.*"}\NormalTok{,}\StringTok{""}\NormalTok{,wikilang)}
+          
+        \CommentTok{\# obtain page content}
+          \CommentTok{\# try english language first, otherwise use language of url}
+\NormalTok{          error }\OtherTok{=} \DecValTok{0}
+          \FunctionTok{tryCatch}\NormalTok{(}
+              \AttributeTok{expr    =}\NormalTok{ \{webpage }\OtherTok{=}\NormalTok{ WikipediR}\SpecialCharTok{::}\FunctionTok{page\_content}\NormalTok{(}\AttributeTok{language=}\StringTok{"en"}\NormalTok{,}\AttributeTok{project=}\StringTok{"wikipedia"}\NormalTok{,}\AttributeTok{page\_name=}\NormalTok{pgname)\}}
+\NormalTok{            , }\AttributeTok{error   =} \ControlFlowTok{function}\NormalTok{(e)\{\}}
+\NormalTok{            , }\AttributeTok{finally =}\NormalTok{ \{}\FunctionTok{tryCatch}\NormalTok{(}
+                    \AttributeTok{expr =}\NormalTok{ \{webpage }\OtherTok{=}\NormalTok{ WikipediR}\SpecialCharTok{::}\FunctionTok{page\_content}\NormalTok{(}\AttributeTok{language=}\NormalTok{wikilang,}\AttributeTok{project=}\StringTok{"wikipedia"}\NormalTok{,}\AttributeTok{page\_name=}\NormalTok{pgname)\}}
+\NormalTok{                  , }\AttributeTok{error =} \ControlFlowTok{function}\NormalTok{(e)\{}\FunctionTok{print}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\StringTok{"Skipping url: "}\NormalTok{,wikiurl)); }\FunctionTok{assign}\NormalTok{(}\StringTok{"error"}\NormalTok{,}\DecValTok{1}\NormalTok{,}\AttributeTok{envir =}\NormalTok{ .GlobalEnv)\}}
+\NormalTok{                  , }\AttributeTok{finally =}\NormalTok{ \{\})\})}
+        
+        \ControlFlowTok{if}\NormalTok{ (error}\SpecialCharTok{!=}\DecValTok{1}\NormalTok{) \{ }\CommentTok{\# only proceed if wikipedia url worked}
+        \CommentTok{\# parse wikipedia content}
+\NormalTok{        webpage }\OtherTok{=}\NormalTok{ rvest}\SpecialCharTok{::}\FunctionTok{read\_html}\NormalTok{(webpage}\SpecialCharTok{$}\NormalTok{parse}\SpecialCharTok{$}\NormalTok{text}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{*}\StringTok{\textasciigrave{}}\NormalTok{)}
+\NormalTok{        wikiscores }\OtherTok{=}\NormalTok{ rvest}\SpecialCharTok{::}\FunctionTok{html\_nodes}\NormalTok{(webpage, }\AttributeTok{xpath=}\StringTok{\textquotesingle{}//*[contains(concat( " ", @class, " " ), concat( " ", "floatright", " " ))]//td\textquotesingle{}}\NormalTok{)}
+\NormalTok{        wikiscores\_stars }\OtherTok{=}\NormalTok{ rvest}\SpecialCharTok{::}\FunctionTok{html\_attr}\NormalTok{(rvest}\SpecialCharTok{::}\FunctionTok{html\_element}\NormalTok{(wikiscores,}\AttributeTok{css=}\StringTok{\textquotesingle{}span\textquotesingle{}}\NormalTok{),}\StringTok{\textquotesingle{}title\textquotesingle{}}\NormalTok{)}
+\NormalTok{        wikiscores }\OtherTok{=}\NormalTok{ rvest}\SpecialCharTok{::}\FunctionTok{html\_text}\NormalTok{(wikiscores,}\AttributeTok{trim=}\NormalTok{T)}
+  
+        \CommentTok{\# some formatting for the scores {-}\textgreater{} convert them all into standard numeric out of 100}
+\NormalTok{        wikiscores\_data }\OtherTok{=} \FunctionTok{as.data.frame}\NormalTok{(}\FunctionTok{matrix}\NormalTok{(wikiscores,}\AttributeTok{ncol=}\DecValTok{2}\NormalTok{,}\AttributeTok{byrow=}\NormalTok{T))}
+\NormalTok{        wikiscores\_stars\_data }\OtherTok{=} \FunctionTok{as.data.frame}\NormalTok{(}\FunctionTok{matrix}\NormalTok{(wikiscores\_stars,}\AttributeTok{ncol=}\DecValTok{2}\NormalTok{,}\AttributeTok{byrow=}\NormalTok{T))}
+          \CommentTok{\# deal with specific review websites}
+\NormalTok{           selector }\OtherTok{=}\NormalTok{ (}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(wikiscores\_stars\_data}\SpecialCharTok{$}\NormalTok{V2) }\SpecialCharTok{\&} \SpecialCharTok{!}\NormalTok{(}\FunctionTok{tolower}\NormalTok{(wikiscores\_data}\SpecialCharTok{$}\NormalTok{V1)}\SpecialCharTok{==}\StringTok{"tom hull – on the Web"}\NormalTok{))}
+\NormalTok{           wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2[selector] }\OtherTok{=}\NormalTok{ wikiscores\_stars\_data}\SpecialCharTok{$}\NormalTok{V2[selector]}
+\NormalTok{           wikiscores\_data }\OtherTok{=}\NormalTok{ wikiscores\_data[wikiscores\_data}\SpecialCharTok{$}\NormalTok{V1}\SpecialCharTok{!=}\StringTok{"Metacritic"}\NormalTok{,] }\CommentTok{\# this is a review aggregator}
+\NormalTok{           wikiscores\_data }\OtherTok{=}\NormalTok{ wikiscores\_data[wikiscores\_data}\SpecialCharTok{$}\NormalTok{V1}\SpecialCharTok{!=}\StringTok{"AnyDecentMusic?"}\NormalTok{,] }\CommentTok{\# this is a review aggregator}
+          \CommentTok{\# remove [] and content inside}
+\NormalTok{           wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2 }\OtherTok{=} \FunctionTok{gsub}\NormalTok{(}\StringTok{"}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{[.*?}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{]"}\NormalTok{,}\StringTok{""}\NormalTok{,wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2)}
+          \CommentTok{\# remove () but NOT CONTENT (sometimes the score is contained within ()}
+\NormalTok{           wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2 }\OtherTok{=}\NormalTok{ stringr}\SpecialCharTok{::}\FunctionTok{str\_replace}\NormalTok{(wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2,}\StringTok{"}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{("}\NormalTok{,}\StringTok{""}\NormalTok{)}
+\NormalTok{           wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2 }\OtherTok{=}\NormalTok{ stringr}\SpecialCharTok{::}\FunctionTok{str\_replace}\NormalTok{(wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2,}\StringTok{"}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{)"}\NormalTok{,}\StringTok{""}\NormalTok{)}
+          \CommentTok{\# fix ill{-}behaved special characters}
+\NormalTok{           wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2 }\OtherTok{=} \FunctionTok{sapply}\NormalTok{(wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2 , }\ControlFlowTok{function}\NormalTok{(x) utils}\SpecialCharTok{::}\FunctionTok{URLencode}\NormalTok{(x) )}
+\NormalTok{           wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2 }\OtherTok{=}\NormalTok{ stringr}\SpecialCharTok{::}\FunctionTok{str\_replace}\NormalTok{(wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2,}\StringTok{"\%E2\%88\%92"}\NormalTok{,}\StringTok{"{-}"}\NormalTok{)}
+\NormalTok{           wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2 }\OtherTok{=}\NormalTok{ stringr}\SpecialCharTok{::}\FunctionTok{str\_replace}\NormalTok{(wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2,}\StringTok{"\%E2\%80\%93"}\NormalTok{,}\StringTok{"{-}"}\NormalTok{)}
+\NormalTok{           wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2 }\OtherTok{=}\NormalTok{ stringr}\SpecialCharTok{::}\FunctionTok{str\_replace}\NormalTok{(wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2,}\StringTok{"\%E2\%80\%94"}\NormalTok{,}\StringTok{"{-}"}\NormalTok{)}
+\NormalTok{           wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2 }\OtherTok{=} \FunctionTok{sapply}\NormalTok{(wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2 , }\ControlFlowTok{function}\NormalTok{(x) utils}\SpecialCharTok{::}\FunctionTok{URLdecode}\NormalTok{(x) )}
+\NormalTok{           wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2 }\OtherTok{=}\NormalTok{ stringr}\SpecialCharTok{::}\FunctionTok{str\_replace}\NormalTok{(wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2,}\StringTok{"}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{?}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{\^{}}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{\textquotesingle{}"}\NormalTok{,}\StringTok{"{-}"}\NormalTok{)}
+        \CommentTok{\# covert letter grade to numeric}
+\NormalTok{          wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2 }\OtherTok{=} \FunctionTok{sapply}\NormalTok{(stringr}\SpecialCharTok{::}\FunctionTok{str\_trim}\NormalTok{(wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2) , lettergrade\_num)}
+          \CommentTok{\# remove unit of measure (stars or discs)}
+\NormalTok{           wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2 }\OtherTok{=}\NormalTok{ stringr}\SpecialCharTok{::}\FunctionTok{str\_replace}\NormalTok{(wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2,}\StringTok{"stars"}\NormalTok{,}\StringTok{""}\NormalTok{)}
+\NormalTok{           wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2 }\OtherTok{=}\NormalTok{ stringr}\SpecialCharTok{::}\FunctionTok{str\_replace}\NormalTok{(wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2,}\StringTok{"discs"}\NormalTok{,}\StringTok{""}\NormalTok{)}
+          \CommentTok{\# remove \%\textquotesingle{}s}
+\NormalTok{           wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2 }\OtherTok{=}\NormalTok{ stringr}\SpecialCharTok{::}\FunctionTok{str\_replace}\NormalTok{(wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2,}\StringTok{"\%"}\NormalTok{,}\StringTok{""}\NormalTok{)}
+          \CommentTok{\# remove remaining scores that contain no numbers}
+\NormalTok{           wikiscores\_data }\OtherTok{=}\NormalTok{ wikiscores\_data[}\FunctionTok{grepl}\NormalTok{(}\StringTok{"}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{d"}\NormalTok{,wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2),]}
+  
+          \CommentTok{\# convert to numeric}
+\NormalTok{          wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2 }\OtherTok{=} \FunctionTok{sapply}\NormalTok{(wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2,}
+                                      \ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{tryCatch}\NormalTok{(}\FunctionTok{eval}\NormalTok{(}\FunctionTok{parse}\NormalTok{(}\AttributeTok{text=}\NormalTok{x)),}
+                                                           \AttributeTok{error=}\ControlFlowTok{function}\NormalTok{(e)\{\},}
+                                                           \AttributeTok{finally=}\ConstantTok{NULL}\NormalTok{) )}
+        \CommentTok{\# final set of scores to put in dataset}
+\NormalTok{          wikiscores\_data }\OtherTok{=}\NormalTok{ wikiscores\_data[}\SpecialCharTok{!}\FunctionTok{sapply}\NormalTok{(wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2,is.null),]}
+\NormalTok{          wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2 }\OtherTok{=} \FunctionTok{as.numeric}\NormalTok{(wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2)}
+\NormalTok{          wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2[wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2}\SpecialCharTok{\textless{}=}\DecValTok{1}\NormalTok{] }\OtherTok{=} \DecValTok{100}\SpecialCharTok{*}\NormalTok{wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2[wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2}\SpecialCharTok{\textless{}=}\DecValTok{1}\NormalTok{]}
+      \DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+  
+      \DocumentationTok{\#\# CRITIC SCORES FROM WIKIPEDIA \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+\NormalTok{        release\_date\_wiki }\OtherTok{=}\NormalTok{ rvest}\SpecialCharTok{::}\FunctionTok{html\_nodes}\NormalTok{(webpage, }\AttributeTok{xpath=}\StringTok{\textquotesingle{}//*[contains(concat( " ", @class, " " ), concat( " ", "published", " " ))]\textquotesingle{}}\NormalTok{)}
+\NormalTok{        release\_date\_wiki }\OtherTok{=}\NormalTok{ rvest}\SpecialCharTok{::}\FunctionTok{html\_text}\NormalTok{(release\_date\_wiki,}\AttributeTok{trim=}\NormalTok{T)}
+\NormalTok{        release\_date\_wiki }\OtherTok{=}\NormalTok{ release\_date\_wiki[}\DecValTok{2}\NormalTok{]}
+      \DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+      
+\NormalTok{      wiki\_scores }\OtherTok{=} \FunctionTok{list}\NormalTok{(wikiscores\_data}\SpecialCharTok{$}\NormalTok{V2)}
+        
+\NormalTok{    \} }\ControlFlowTok{else}\NormalTok{ \{ }\CommentTok{\# if no wiki article found, set variables to empty }
+\NormalTok{      release\_date\_wiki }\OtherTok{=} \ConstantTok{NA}
+\NormalTok{      wiki\_scores }\OtherTok{=} \FunctionTok{list}\NormalTok{(}\FunctionTok{numeric}\NormalTok{(}\DecValTok{0}\NormalTok{))}
+\NormalTok{    \}}
+     
+     
+    \CommentTok{\# grow the dataset with the additional tracks and album review info}
+\NormalTok{      artistdata }\OtherTok{=} \FunctionTok{rbind}\NormalTok{(artistdata,}
+                  \FunctionTok{cbind}\NormalTok{(artist\_name,}
+\NormalTok{                        artist\_id,}
+\NormalTok{                        artist}\SpecialCharTok{$}\NormalTok{followers}\SpecialCharTok{$}\NormalTok{total,}
+\NormalTok{                        example\_album}\SpecialCharTok{$}\NormalTok{name,}
+\NormalTok{                        id,}
+\NormalTok{                        example\_album}\SpecialCharTok{$}\NormalTok{popularity,}
+\NormalTok{                        example\_album}\SpecialCharTok{$}\NormalTok{release\_date,}
+\NormalTok{                        album\_scrobbles,}
+\NormalTok{                        release\_date\_wiki,}
+\NormalTok{                        wiki\_scores))}
+      
+    \FunctionTok{print}\NormalTok{(}\FunctionTok{cbind}\NormalTok{(artist\_name,}
+\NormalTok{                artist\_id,}
+\NormalTok{                artist}\SpecialCharTok{$}\NormalTok{followers}\SpecialCharTok{$}\NormalTok{total,}
+\NormalTok{                example\_album}\SpecialCharTok{$}\NormalTok{name,}
+\NormalTok{                id,}
+\NormalTok{                example\_album}\SpecialCharTok{$}\NormalTok{popularity,}
+\NormalTok{                example\_album}\SpecialCharTok{$}\NormalTok{release\_date,}
+\NormalTok{                album\_scrobbles,}
+\NormalTok{                release\_date\_wiki,}
+\NormalTok{                wiki\_scores))}
+\NormalTok{    \} }\CommentTok{\# end of if(error!=1)}
+\NormalTok{    \} }\CommentTok{\# end of album loop}
+\NormalTok{\} }\CommentTok{\# end of artist loop}
+\FunctionTok{colnames}\NormalTok{(artistdata) }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\StringTok{"artist\_name"}\NormalTok{,}\StringTok{"artist\_id"}\NormalTok{,}\StringTok{"artist\_followers"}\NormalTok{,}\StringTok{"album\_name"}\NormalTok{,}\StringTok{"album\_id"}\NormalTok{,}
+                         \StringTok{"album\_popularity"}\NormalTok{, }\StringTok{"album\_releasedate"}\NormalTok{,}\StringTok{"album\_scrobbles"}\NormalTok{,}\StringTok{"release\_date\_wiki"}\NormalTok{,}\StringTok{"wiki\_scores"}\NormalTok{)}
+\NormalTok{artistdata }\OtherTok{=} \FunctionTok{as.data.frame}\NormalTok{(artistdata)}
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+\end{Highlighting}
+\end{Shaded}
+
+
+  \bibliography{references.bib}
+
+
+% should be about here.
+% We'll put doublespacing end here
+
+\end{document}
