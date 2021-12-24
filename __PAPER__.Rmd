@@ -142,18 +142,18 @@ demographic effects.
 # For this section you will need to set api keys in order to run
 
 # spotify
-id = '3f766570eef74a6986a646bf7dd73102'
-secret = '5f884eb17551445ba76ab797ec7505b6'
+id = 'xxxxxxxx'
+secret = 'xxxxxxxx'
 Sys.setenv(SPOTIFY_CLIENT_ID = id)
 Sys.setenv(SPOTIFY_CLIENT_SECRET = secret)
 access_token = spotifyr::get_spotify_access_token()
 
 # last.fm
-lastfm_key = "749b4800592668088e8a563845cf906f"
+lastfm_key = "xxxxxxxxxx"
 
 # google
-google.key = 'AIzaSyBKJ9b9c1zKEEUs-g2PTrosIHO8epctAls'
-google.cx = '2fb4b305ff06c300d'
+google.key = 'xxxxxxx'
+google.cx = 'xxxxxxx'
 ```
 
 I make use of several data sources in order to collect data on artists, their albums,
@@ -929,8 +929,8 @@ for (aname in artistnames[694:1000]) {
 
 ## SPOTIFY DATA #####################################
 
-  id = '3f766570eef74a6986a646bf7dd73102'
-  secret = '5f884eb17551445ba76ab797ec7505b6'
+  id = 'xxxxxx'
+  secret = 'xxxxxx'
   Sys.setenv(SPOTIFY_CLIENT_ID = id)
   Sys.setenv(SPOTIFY_CLIENT_SECRET = secret)
   access_token = spotifyr::get_spotify_access_token()
@@ -968,7 +968,7 @@ for (aname in artistnames[694:1000]) {
     example_album=spotifyr::get_album(id=id,authorization=access_token)
 
     ## LAST FM ##############################################################
-    api_key = "749b4800592668088e8a563845cf906f"
+    api_key = "xxxxxxxx"
     # '&' and '+' and '#' cause issues
     url_artist = stringr::str_replace_all(artist_name,"\\+","%2B")
     url_album = stringr::str_replace_all(example_album$name,"\\+","%2B")
@@ -995,8 +995,8 @@ for (aname in artistnames[694:1000]) {
 
     # Use google api to search for the (most likely) correct wikipedia page
     # (note that this is a custom search api that searches only wikipedia)
-     google.key = 'AIzaSyBKJ9b9c1zKEEUs-g2PTrosIHO8epctAls'
-     google.cx = '2fb4b305ff06c300d'
+     google.key = 'xxxxxxxx'
+     google.cx = 'xxxxxxxx'
      
      # keywords to be searched in google, separated by '+'
      keyword = paste0(artist_name," ",example_album$name," ","album")
